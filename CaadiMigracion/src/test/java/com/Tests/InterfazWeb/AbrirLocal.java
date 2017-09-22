@@ -34,7 +34,7 @@ public class AbrirLocal {
         (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(WebDriver d) {
-                return d.getTitle().contains("Bienvenido");
+                return d.getTitle().contains("Benvenido");
             }
         });
 
