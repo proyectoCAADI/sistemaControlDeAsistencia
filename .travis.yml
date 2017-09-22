@@ -1,2 +1,2 @@
 language: java
-script: mvn -f /home/travis/build/Arthyom/MigracionCaadi/CaadiMigracion/pom.xml test -B mvn mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script: mvn -f /home/travis/build/Arthyom/MigracionCaadi/CaadiMigracion/pom.xml test -B  install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
