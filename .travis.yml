@@ -5,4 +5,6 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 
-script: mvn -f /home/travis/build/Arthyom/MigracionCaadi/CaadiMigracion/pom.xml test -B  install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script: mvn -f /home/travis/build/Arthyom/MigracionCaadi/CaadiMigracion/pom.xml 
+        test -B  install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+        ant test
