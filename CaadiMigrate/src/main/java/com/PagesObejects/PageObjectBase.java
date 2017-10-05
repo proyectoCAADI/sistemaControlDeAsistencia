@@ -9,6 +9,7 @@ import java.util.List;
 import javafx.scene.web.WebEvent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
@@ -34,6 +35,18 @@ public class PageObjectBase {
     
     public List<WebElement> FindElementByTag (String ElementTag){
         return this.ControladorNavegador.findElements(By.tagName(ElementTag));
+    }
+    
+    public WebElement FindElementByID (String ElementId){
+        return this.ControladorNavegador.findElement(By.id(ElementId));
+    }
+    
+    public WebElement FindElementByName (String ElementName){
+        return this.ControladorNavegador.findElement(By.name(ElementName));
+    }
+    
+    public void CloseBrowser (){
+        this.ControladorNavegador.close();
     }
 }
 
