@@ -5,6 +5,9 @@
  */
 package com.PagesObejects;
 
+import java.util.List;
+import javafx.scene.web.WebEvent;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -29,6 +32,9 @@ public class PageObjectBase {
         return this.ControladorNavegador.getTitle();
     }
     
+    public List<WebElement> FindElementByTag (String ElementTag){
+        return this.ControladorNavegador.findElements(By.tagName(ElementTag));
+    }
 }
 
 
