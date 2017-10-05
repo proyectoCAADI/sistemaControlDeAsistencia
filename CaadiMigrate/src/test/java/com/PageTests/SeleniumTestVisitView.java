@@ -21,7 +21,7 @@ public class SeleniumTestVisitView {
     
     @Test
     public void testCheckData() throws Exception {
-        String visitViewURL = "http://localhost:8080/CaadiMigrate/faces/visit/View/xhtml";
+        String visitViewURL = "http://localhost:8080/CaadiMigrate/faces/visit/View.xhtml";
         PageObjectBase VisitView = new PageObjectBase();
         VisitView.OpenBrowserAndNavigate(visitViewURL);
         
