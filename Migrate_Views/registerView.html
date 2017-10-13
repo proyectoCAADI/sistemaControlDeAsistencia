@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sistema CAADI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/registerStyle.css">
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/registerValidate.js"></script>
+    </head>
+
+    <body>
+        <div class="banner">
+            <img src="images/escudo.png" alt="Escudo UG" title="Escudo de la Universidad de Guanajuato" id="imageBanner">
+            <div>
+              
+            </div>
+        </div>
+
+        <div id="formulario">
+           <input type="text" id="txtNUA" placeholder=" Teclea tu NUA " name="txtNUA" onchange="validate()" />
+           <p id="errMessage1"> Escribe s&oacute;lo n&uacute;meros </p>
+           <p id="errMessage2"> Debe ser un n&uacute;mero de 6 d&iacute;gitos </p>
+           <input type="submit" value="Ingresar" name="btnINGRESS" id="boton" />
+        </div>
+
+    </body>
+</html>
