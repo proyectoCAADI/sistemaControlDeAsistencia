@@ -22,3 +22,8 @@ function validate(){
             err2.style.display = "none";
     }
 }
+
+function closeWelcomeModal(){
+    var modal = document.getElementById("welcomeModal");
+    modal.style.display = "none";
+}
