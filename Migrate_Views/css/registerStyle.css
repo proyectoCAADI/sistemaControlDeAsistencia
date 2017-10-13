@@ -74,7 +74,7 @@ body{
 .begin{ align-content: center; }
 
 #welcomeModal{
-    display: block; /* Se oculta por default */
+    display: none; /* Se oculta por default */
     position: fixed; /* Se mantiene en su lugar */
     z-index: 1; /* Esta al frente de toda la pagina */
     padding-top: 80px; /* padding superior */
@@ -113,6 +113,7 @@ body{
     border: 1px solid rgb(23, 77, 135);
     border-radius: 5px !important;
     font-size: 16px;
+
     height: 30px;
     width: 235px; 
     margin-top: 10px;
