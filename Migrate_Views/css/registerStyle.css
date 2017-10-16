@@ -1,4 +1,4 @@
-body{
+A3body{
     background-color: #d5d0ba !important;
 }
 
@@ -47,7 +47,7 @@ body{
     text-align: center;
 }
 
-#errMessage1, #errMessage2, #errMessage3{
+#errMessage1, #errMessage2{
     display: none;
     color: red;
     position: relative;
@@ -73,7 +73,7 @@ body{
 
 .begin{ align-content: center; }
 
-#welcomeModal{
+#welcomeModal, #skillsModal{
     display: none; /* Se oculta por default */
     position: fixed; /* Se mantiene en su lugar */
     z-index: 1; /* Esta al frente de toda la pagina */
@@ -87,12 +87,12 @@ body{
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-#welcomeText{
+#welcomeText, #selectSkill{
     font-size: 30px;
     margin-left: 1%;
 }
 
-#txtBoxModal{
+#txtBoxModal, #optionsModal{
     position: relative;
     background-color: #fefefe;
     margin: auto;
@@ -121,8 +121,70 @@ body{
     margin-left: 28%;
 }
 
-#btnModal:hover{
-    background-color: rgb(14, 52, 91);    
+#btnGrammar, #btnListening, #btnReading, #btnSpeaking{
+    background-color: rgb(23, 77, 135);
+    color: white;
+    border: 1px solid rgb(23, 77, 135);
+    border-radius: 5px !important;
+    font-size: 26px;
+
+    height: 45px;
+    width: 55%;
+    margin-bottom: 10px;
+    margin-left: 22.8%;
+}
+
+#btnListening{
+    background-color: darkgray;
+    color: white;
+    border: 1px solid darkgray;
+}
+
+#btnReading{
+    background-color: orange;
+    color: white;
+    border: 1px solid orange;
+}
+
+#btnSpeaking{
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+    margin-bottom: 35px;    
+}
+
+#btnModal:hover, #btnGrammar:hover{
+    background-color: rgb(14, 52, 91);
+    cursor: pointer;
+}
+
+#btnListening:hover{
+    background-color: gray;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+#btnReading:hover{
+    background-color: darkorange;
+    border: 1px solid darkorange;
+    cursor: pointer;
+}
+
+#btnSpeaking:hover{
+    background-color: darkgreen;
+    border: 1px solid darkgreen;
+    cursor: pointer;
+}
+
+/* Animacion de entrada para el modal */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
 }
 
 
