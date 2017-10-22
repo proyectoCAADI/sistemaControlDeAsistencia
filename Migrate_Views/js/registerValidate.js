@@ -18,6 +18,14 @@ function check(nua){
     }
 }
 
+function onfocus(){
+    var err1 = document.getElementById("errMessage1");
+    var err2 = document.getElementById("errMessage2");
+
+    err1.style.display = 'none';
+    err2.style.display = 'none';
+}
+
 function validate(){
     var nua = document.getElementById("txtNUA");
     var err1 = document.getElementById("errMessage1");
@@ -45,15 +53,20 @@ function validate(){
 }
 
 function skill(value){
-    if( value == 'Grammar')  
-        confirmar();
-    else if( value == 'Listening')
-        confirmar();
-    else if( value == 'Reading')
-        confirmar();
-    else if( value == 'Speaking')
-        confirmar();
 
+    if( value == 'Grammar'){
+        closeSkillsModal();
+        alert('Habilidad: Grammar');
+    }else if( value == 'Listening'){
+        closeSkillsModal();
+        alert('Habilidad: Listening');
+    }else if( value == 'Reading'){
+        closeSkillsModal();
+        alert('Habilidad: Reading');
+    }else if( value == 'Speaking'){
+        closeSkillsModal();
+        alert('Habilidad: Speaking');
+    }
 
     document.getElementById("txtNUA").value = '';
 }
@@ -68,27 +81,6 @@ function closeWelcomeModal(){
     var modal = document.getElementById("welcomeModal");
     modal.style.display = "none";
     document.getElementById("txtNUA").value = '';
-}
-
-function isNotTheRightUser(){
-    var obj = document.getElementById("btnModalCancelar");
-    if (obj === null) {
-        openWelcomeModal();
-        flag1 = true;
-    }
-    else if ( obj !== null ){
-        closeWelcomeModal();
-        flag1 = false;   
-    }
-    document.getElementById("txtNUA").value = '';
-    alert('Ingresa de manera correcta tu NUA');
-}
-function confirmar(){
-    var opcion = confirm("¿Estás seguro que esa es la actividad?");
-    if(opcion === true)
-        closeSkillsModal();
-    else
-        openSkillsModal();
 }
 
 function openSkillsModal(){

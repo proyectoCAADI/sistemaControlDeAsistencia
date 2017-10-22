@@ -7,6 +7,8 @@
         <link rel="stylesheet" type="text/css" href="css/registerStyle.css">
         <script src="libs/jquery-3.2.1.min.js"></script>
         <script src="js/registerValidate.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -18,30 +20,37 @@
         </div>
 
         <div id="formulario">
-           <input type="text" id="txtNUA" placeholder=" Teclea tu NUA " name="txtNUA" onchange="validate()" />
-           <p id="errMessage1"> Escribe s&oacute;lo n&uacute;meros </p>
-           <p id="errMessage2"> Debe ser un n&uacute;mero de 6 d&iacute;gitos </p>
-           <input type="submit" value="Ingresar" name="btnINGRESS" id="boton" onclick="validate()"/>
-        </div>
+           <input type="text" id="txtNUA" placeholder=" Teclea tu NUA " name="txtNUA"  onchange="validate()" onfocus="onfocus()" />
+
+            <div class="alert alert-danger" id="errMessage1">
+                Escribe s&oacute;lo n&uacute;meros
+            </div>
+
+            <div class="alert alert-danger" id="errMessage2">
+                Debe ser un n&uacute;mero de 6 d&iacute;gitos
+            </div>
+
+          <button type="button" id="boton" class="btn btn-primary btn-block" name="btnINGRESS" onclick="validate()"> Ingresar </button>
+<!--           <input type="submit" value="Ingresar" name="btnINGRESS" id="boton"  onclick="validate()"/>
+-->        </div>
 
         <div id="welcomeModal">
           <div id="txtBoxModal">
-              <p id="welcomeText" align="center"> ¿Eres <br><br> Walter Alejandro Moreno Ram&iacute;rez? </p>
+              <p id="welcomeText" align="center"> Bienvenido al CAADI: </p>
+              <p id="newUser" align="center"> Walter Alejandro Moreno Ram&iacute;rez </p>
               <input type="submit" id="btnModal" value="Aceptar" onclick="closeWelcomeModal()">
-             <input type="submit" id="btnModalCancelar" value="Cancelar" onclick="isNotTheRightUser()">
           </div>
         </div>
 
         <div id="skillsModal">
           <div id="optionsModal">
               <p id="selectSkill" align="center"> Selecciona la habilidad que trabajaste: </p>
-              <input type="submit" id="btnGrammar" value="Grammar" onclick="skill('Grammar')"> <br>
-              <input type="submit" id="btnListening" value="Listening" onclick="skill('Listening')"> <br>
-              <input type="submit" id="btnReading" value="Reading" onclick="skill('Reading')"> <br>
-              <input type="submit" id="btnSpeaking" value="Speaking" onclick="skill('Speaking')"> <br>
+              <input type="submit" id="btnGrammar" value="Grammar" onclick="closeSkillsModal()"> <br>
+              <input type="submit" id="btnListening" value="Listening" onclick="closeSkillsModal()"> <br>
+              <input type="submit" id="btnReading" value="Reading" onclick="closeSkillsModal()"> <br>
+              <input type="submit" id="btnSpeaking" value="Speaking" onclick="closeSkillsModal()"> <br>
           </div>
-
         </div>
-
+        
     </body>
 </html>
