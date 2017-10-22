@@ -1,0 +1,208 @@
+A3body{
+    background-color: #d5d0ba !important;
+}
+
+.banner{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 25.6%;
+    font-family: Helvetica, Arial, sans-serif;
+    background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%);
+    border-bottom: 8px solid #A0935F;
+}
+
+#imageBanner{
+    position: absolute;
+    top: 3.3%;
+    left: 40.35%;
+    vertical-align: center;
+    height: 103.516px;
+    background-color: rgba(0,0,0,0);
+    width: 250px;
+    line-height: 20px;
+}
+
+#formulario{
+    font-family: Ghandi;
+    color: #7E7E7E;
+    background-color: rgb(230, 230, 230);
+    padding: 1em;
+    margin: 20% 0 0em 33.2em;
+    width: 240px;
+    border-radius: 5px !important;
+    box-shadow: 0 9px 9px 0 rgba(0,0,0,0.2), 0 2px 20px 0 rgba(0,0,0,0.1);
+}
+
+#txtNUA{
+    margin: 15px 0 0 0;
+    color: black;
+    background-color: white;
+    border: 1px solid darkgray;
+    font-size: 15px;
+    border-radius: 4px !important;
+    height: 30px;
+    width: 235px;
+    text-align: center;
+}
+
+#errMessage1, #errMessage2{
+    display: none;
+    color: red;
+    position: relative;
+    margin: 3px 0px -21px 2px;
+    background-color: rgba(0,0,0,0);
+}
+
+#boton{
+    background-color: rgb(23, 77, 135);
+    color: white;
+    border: 1px solid rgb(23, 77, 135);
+    border-radius: 5px !important;
+    font-size: 16px;
+    height: 30px;
+    width: 235px; 
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+#boton:hover{
+    background-color: rgb(14, 52, 91);
+}
+
+.begin{ align-content: center; }
+
+#welcomeModal, #skillsModal{
+    display: none; /* Se oculta por default */
+    position: fixed; /* Se mantiene en su lugar */
+    z-index: 1; /* Esta al frente de toda la pagina */
+    padding-top: 80px; /* padding superior */
+    left: 0;
+    top: 0;
+    width: 100%; /* ancho del 100% */
+    height: 100%; /* altura del 100% */
+    overflow: auto; /* scroll activado si se requiere */
+    background-color: rgb(0,0,0); /* color fuera del modal*/
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#welcomeText, #selectSkill{
+    font-size: 30px;
+    margin-left: 1%;
+}
+
+#txtBoxModal, #optionsModal{
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 40%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    border-radius: 10px !important;
+}
+
+#btnModal{
+    background-color: rgb(23, 77, 135);
+    color: white;
+    border: 1px solid rgb(23, 77, 135);
+    border-radius: 5px !important;
+    font-size: 16px;
+
+    height: 30px;
+    width: 235px; 
+    margin-top: 10px;
+    margin-bottom: 25px;
+    margin-left: 28%;
+}
+
+#btnModalCancelar{
+    background-color: rgb(231, 037, 018);
+    color: white;
+    border: 1px solid rgb(231, 037, 018);
+    border-radius: 5px !important;
+    font-size: 16px;
+
+    height: 30px;
+    width: 235px; 
+    margin-top: 10px;
+    margin-bottom: 25px;
+    margin-left: 28%;
+    cursor: pointer;
+}
+#btnModalCancelar:hover{
+    background-color: rgb(161, 035, 018);
+}
+
+#btnGrammar, #btnListening, #btnReading, #btnSpeaking{
+    background-color: rgb(23, 77, 135);
+    color: white;
+    border: 1px solid rgb(23, 77, 135);
+    border-radius: 5px !important;
+    font-size: 26px;
+
+    height: 45px;
+    width: 55%;
+    margin-bottom: 10px;
+    margin-left: 22.8%;
+}
+
+#btnListening{
+    background-color: darkgray;
+    color: white;
+    border: 1px solid darkgray;
+}
+
+#btnReading{
+    background-color: orange;
+    color: white;
+    border: 1px solid orange;
+}
+
+#btnSpeaking{
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+    margin-bottom: 35px;    
+}
+
+#btnModal:hover, #btnGrammar:hover{
+    background-color: rgb(14, 52, 91);
+    cursor: pointer;
+}
+
+#btnListening:hover{
+    background-color: gray;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+#btnReading:hover{
+    background-color: darkorange;
+    border: 1px solid darkorange;
+    cursor: pointer;
+}
+
+#btnSpeaking:hover{
+    background-color: darkgreen;
+    border: 1px solid darkgreen;
+    cursor: pointer;
+}
+
+/* Animacion de entrada para el modal */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
