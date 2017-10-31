@@ -13,7 +13,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -81,8 +80,6 @@ public class Students implements Serializable {
     @Size(max = 500)
     @Column(name = "email")
     private String email;
-    @ManyToMany(mappedBy = "studentsCollection")
-    private Collection<Groups> groupsCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "nua")
     private Collection<Visit> visitCollection;
 
@@ -163,15 +160,6 @@ public class Students implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @XmlTransient
-    public Collection<Groups> getGroupsCollection() {
-        return groupsCollection;
-    }
-
-    public void setGroupsCollection(Collection<Groups> groupsCollection) {
-        this.groupsCollection = groupsCollection;
     }
 
     @XmlTransient

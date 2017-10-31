@@ -7,18 +7,12 @@
     <h:body>
         <ui:composition template="Plantillas/Bases/PlantillaBase_TresPartes.xhtml">
         <ui:define name="content">
-        <br />   
-        
-        <h:link outcome="/groups/List" value="Show All Groups Items"/>
-        <br />
-        <h:link outcome="/periods/List" value="Show All Periods Items"/>
-        <br />
-        <h:link outcome="/students/List" value="Show All Students Items"/>
-        <br />
-        <h:link outcome="/teachers/List" value="Show All Teachers Items"/>
-        <br />
-        <h:link outcome="/visit/List" value="Show All Visit Items"/>
-        <br/><br/>
+            <h:form id="formulario">
+                <h:inputText id="txtNUA"  value="#{visitController.selected.nua}"/>
+                <h:commandButton action="#{visitController.logInAsStudent()}"/>
+                <h:commandButton action="#{visitController.logOutAsStudent()}"/>
+                
+            </h:form>
         </ui:define>
         </ui:composition>
     </h:body>

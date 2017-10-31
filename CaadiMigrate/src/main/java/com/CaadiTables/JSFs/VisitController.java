@@ -4,8 +4,13 @@ import com.CaadiTables.Entities.Visit;
 import com.CaadiTables.JSFs.util.JsfUtil;
 import com.CaadiTables.JSFs.util.PaginationHelper;
 import com.CaadiTables.Beans.VisitFacade;
+import com.CaadiTables.Entities.Periods;
+import com.CaadiTables.Entities.Students;
+import com.CaadiTables.JSFs.util.Herramientas;
+import com.PerfilBase.PerfilBase;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -28,7 +33,64 @@ public class VisitController implements Serializable {
     private com.CaadiTables.Beans.VisitFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String NuaPlano;
 
+    
+    public void logInAsStudent (){          
+        if( current.getNua() != null ){
+            System.out.println("El estudiante esta en la db");
+            
+            // ver si la sesion ya esta en el hash 
+            if ( !Herramientas.containsKeyInHash( current.getNua().getNua()) ){
+                
+                // conseguir las referencias a los objetos 
+                current.setPeriodId( (Periods) Herramientas.getEm().find(Periods.class,1) );
+                
+                // llenar la informacin de visita
+                current.setStart( new Date () );
+                
+                // crear un nuevo perfil 
+                PerfilBase nuevoPerfil = new PerfilBase ();
+                nuevoPerfil.setInfoEst( current.getNua() );
+                nuevoPerfil.setInfoVst(current);
+               
+                // meter el perfil en el hash
+                Herramientas.putInHash(current.getNua().getNua(), nuevoPerfil);
+                
+                System.out.println("perfil insertado correctamente. Ya puedes empesar super caadi!");
+            }
+            else
+                System.out.println("el usuario ya esta loggeado");
+        }
+        else
+            System.out.println("el estudainte no esta en la db");
+        
+    }
+    
+    
+    public void logOutAsStudent ( ){
+        if( current.getNua() != null ){
+            // buscar el perfil en el hash de sesiones 
+        PerfilBase pb = (PerfilBase)Herramientas.findObjectInHashByKey(current.getNua().getNua()); 
+            System.out.println("perfil encontrado... procediendo a desconectar");
+            
+            // llenar los valores faltantes 
+            pb.getInfoVst().setEnd( new Date() );
+            pb.getInfoVst().setSkill("Habilidad rara");
+            
+            // persistir el objeto
+            getFacade().create( pb.getInfoVst() );
+            
+            // eliminar el perfil del hash
+            Herramientas.removeFromHashByKey( pb.getInfoEst().getNua() );
+            
+            System.out.println("cecion cerrada correctamente hasta luego!");            
+        }
+        else
+            System.out.println("El estudiante no esta logeado! no se encontro sesion");
+    }
+    
+    
     public VisitController() {
     }
 
@@ -231,5 +293,15 @@ public class VisitController implements Serializable {
         }
 
     }
+
+    public String getNuaPlano() {
+        return NuaPlano;
+    }
+
+    public void setNuaPlano(String NuaPlano) {
+        this.NuaPlano = NuaPlano;
+    }
+    
+    
 
 }
