@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <h:body>
         <ui:composition template="Plantillas/Bases/PlantillaBase_TresPartes.xhtml">
@@ -11,9 +12,11 @@
             
             <h:form id="formulario" class="container"  >
                 <p:panelGrid columns="1"  >
-                    <p:inputText id="txtNUA"  value="#{visitController.selected.nua}"   required="true" maxlength="6" placeholder="NUA"/>
-                    <br/><br/>
-                    <p:commandButton type="button" value="Ingresar" onclick="PF('entrar').show();" />
+                    <p:inputText label="NUA" id="txtNUA"  requiredMessage="NUA es obligatorio" 
+                                 value="#{visitController.selected.nua}"   required="true" maxlength="6" placeholder="NUA"/>                       
+                    <h:message for="txtNUA" errorClass="error" />
+                    
+                    <p:commandButton  value="Ingresar" onclick="PF('entrar').show();" />
                     <p:commandButton type="button" value="Salir"    onclick="PF('salir').show();"/>
                 </p:panelGrid>
                 
