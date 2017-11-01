@@ -68,7 +68,7 @@ public class VisitController implements Serializable {
     }
     
     
-    public void logOutAsStudent ( ){
+    public void logOutAsStudent ( String skill ){
         if( current.getNua() != null ){
             // buscar el perfil en el hash de sesiones 
         PerfilBase pb = (PerfilBase)Herramientas.findObjectInHashByKey(current.getNua().getNua()); 
@@ -76,7 +76,7 @@ public class VisitController implements Serializable {
             
             // llenar los valores faltantes 
             pb.getInfoVst().setEnd( new Date() );
-            pb.getInfoVst().setSkill("Habilidad rara");
+            pb.getInfoVst().setSkill(skill);
             
             // persistir el objeto
             getFacade().create( pb.getInfoVst() );

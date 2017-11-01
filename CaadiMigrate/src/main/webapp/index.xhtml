@@ -2,16 +2,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     
     <h:body>
         <ui:composition template="Plantillas/Bases/PlantillaBase_TresPartes.xhtml">
         <ui:define name="content">
-            <h:form id="formulario">
-                <h:inputText id="txtNUA"  value="#{visitController.selected.nua}"/>
-                <h:commandButton action="#{visitController.logInAsStudent()}"/>
-                <h:commandButton action="#{visitController.logOutAsStudent()}"/>
+            
+            <h:form id="formulario" class="container"  >
+                <p:panelGrid columns="1"  >
+                    <p:inputText id="txtNUA"  value="#{visitController.selected.nua}"   required="true" maxlength="6" placeholder="NUA"/>
+                    <br/><br/>
+                    <p:commandButton type="button" value="Ingresar" onclick="PF('entrar').show();" />
+                    <p:commandButton type="button" value="Salir"    onclick="PF('salir').show();"/>
+                </p:panelGrid>
                 
+                <p:dialog header="infos" position="center" responsive="true" resizable="false" class="formulario"
+                          widgetVar="entrar" dynamic="true" closable="true" modal="true" draggable="false" >
+                    <h:commandButton                value="aceptar"  onclick="PF('entrar').hide();" action="#{visitController.logInAsStudent()}"  />
+                    <h:commandButton type="button"  value="cancelar" onclick="PF('entrar').hide();"/>
+                </p:dialog>
+                
+                <p:dialog header="infos" position="center" responsive="true" resizable="false" class="formulario"
+                          widgetVar="salir" dynamic="true" closable="true" modal="true" draggable="false" >
+                    <h:commandButton binding="#{lsting}" value="Listening"  onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(lsting.value)}"  />
+                    <h:commandButton binding="#{reding}" value="Reading"    onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(reding.value)}"/>
+                    <h:commandButton binding="#{grming}" value="Grammar"    onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(grming.value)}"  />
+                    <h:commandButton binding="#{spking}" value="Speaking"   onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(spking.value)}"/> 
+                </p:dialog>
             </h:form>
         </ui:define>
         </ui:composition>

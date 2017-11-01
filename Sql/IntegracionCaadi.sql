@@ -5,6 +5,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Schema CaadiIntegrada
 -- -----------------------------------------------------
 
@@ -67,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `CaadiIntegrada`.`Groups` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -113,7 +117,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `CaadiIntegrada`.`Visit`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `CaadiIntegrada`.`Visit` (
-  `id` INT(11) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `periodId` INT(11) NOT NULL,
   `nua` VARCHAR(10) NOT NULL,
   `skill` VARCHAR(40) NULL DEFAULT NULL,
@@ -133,6 +137,7 @@ CREATE TABLE IF NOT EXISTS `CaadiIntegrada`.`Visit` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 25
 DEFAULT CHARACTER SET = utf8;
 
 

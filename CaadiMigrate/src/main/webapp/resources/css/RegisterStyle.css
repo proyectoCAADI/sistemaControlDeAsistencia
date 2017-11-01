@@ -37,6 +37,19 @@ body{
     box-shadow: 0 9px 9px 0 rgba(0,0,0,0.2), 0 2px 20px 0 rgba(0,0,0,0.1);
 }
 
+
+.formulario{
+    position: absolute;
+    font-family: Ghandi;
+    color: #7E7E7E;
+    background-color: rgb(230, 230, 230);
+    padding: 14px;
+    top: 42%;
+    left: 40%;
+    width: 263px;
+    border-radius: 5px !important;
+    box-shadow: 0 9px 9px 0 rgba(0,0,0,0.2), 0 2px 20px 0 rgba(0,0,0,0.1);
+}
 #txtNUA{
     margin: 15px 0 0 0;
     color: black;
