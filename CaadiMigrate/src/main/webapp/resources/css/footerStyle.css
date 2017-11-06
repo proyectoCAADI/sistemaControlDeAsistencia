@@ -1,53 +1,14 @@
-html, body{
-    height: 100%;
-    background-color: #FFFFFF;
-}
-
-#main{ height: 85%; }
-
-.banner{
-    height: 50px;
-    font-family: Helvetica, Arial, sans-serif;
-    background-color: white;
-    border-top: 1px solid #CCC;
-    border-bottom: 5px solid #A0935F;
-    padding-left: 60%;
-    margin-top: 10.9em;
-}
-
-.txt1, .txt2{
-    margin-bottom: 8px;
-    color: black;
-}
-
-.caadi{
-    margin-bottom: 10px;
-    margin-top: 5px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    color: black;
-    border-radius: 10px !important;
-    font-size: 40px !important;
-    font-family: Arial, Helvetica;
-}
-
-.txtBox1, .txtBox2{
-    background-color: white;
-    border: 1px solid darkgray;
-    border-radius: 4px !important;
-    height: 25px;
-    width: 235px;
-    padding-top: 0px;
-}
-.begin{ align-content: center; }
 
 footer{
+    position: absolute;
+    top: 86%;
+    left: 4.5%;
     text-decoration-style: block;
     background-color: rgb(229, 229, 229);
     border-bottom: 1px solid #e7e7e7;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-size: 11px !important;
+    width: 90%;
 }
 
 .footerText{
@@ -56,8 +17,8 @@ footer{
     color: #092f56;
     font-stretch: normal;
     margin: 0px;
+    font-size: 13px !important;
 }
-
 
 @font-face {
   font-family: 'Raleway';

@@ -10,28 +10,27 @@
         <ui:composition template="Plantillas/Bases/PlantillaBase_TresPartes.xhtml">
         <ui:define name="content">
             
-            <h:form id="formulario" class="container"  >
-                <p:panelGrid columns="1"  >
-                    <p:inputText label="NUA" id="txtNUA"  requiredMessage="NUA es obligatorio" 
-                                 value="#{visitController.selected.nua}"   required="true" maxlength="6" placeholder="NUA"/>                       
-                    <h:message for="txtNUA" errorClass="error" />
-                    
-                    <p:commandButton  value="Ingresar" onclick="PF('entrar').show();" />
-                    <p:commandButton type="button" value="Salir"    onclick="PF('salir').show();"/>
-                </p:panelGrid>
+            <h:form id="formulario" class="container">
+                <p:inputText label="NUA" id="txtNUA"  requiredMessage="NUA es obligatorio"
+                             value="#{visitController.selected.nua}"   required="true" maxlength="6" placeholder="Teclea tu NUA"
+                             class="form-control" onchange="validate"/>
+
+                <p:commandButton  value="Ingresar" onclick="PF('entrar').show();" class="btn btn-primary btn-block" />
+                <p:commandButton type="button" value="Salir"    onclick="PF('salir').show();" class="btn btn-primary btn-block"/>
                 
-                <p:dialog header="infos" position="center" responsive="true" resizable="false" class="formulario"
+                <p:dialog header="Confirmaci&oacute;n" position="center" responsive="true" resizable="false" class="formulario"
                           widgetVar="entrar" dynamic="true" closable="true" modal="true" draggable="false" >
-                    <h:commandButton                value="aceptar"  onclick="PF('entrar').hide();" action="#{visitController.logInAsStudent()}"  />
-                    <h:commandButton type="button"  value="cancelar" onclick="PF('entrar').hide();"/>
+                    <h:commandButton type="button" value="Aceptar"  onclick="PF('entrar').hide();" action="#{visitController.logInAsStudent()}"
+                                     class="btn btn-primary btn-block" /> <br></br>
+                    <h:commandButton type="button"  value="Cancelar" onclick="PF('entrar').hide();" class="btn btn-primary btn-block"/>
                 </p:dialog>
                 
                 <p:dialog header="infos" position="center" responsive="true" resizable="false" class="formulario"
-                          widgetVar="salir" dynamic="true" closable="true" modal="true" draggable="false" >
-                    <h:commandButton binding="#{lsting}" value="Listening"  onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(lsting.value)}"  />
-                    <h:commandButton binding="#{reding}" value="Reading"    onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(reding.value)}"/>
-                    <h:commandButton binding="#{grming}" value="Grammar"    onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(grming.value)}"  />
-                    <h:commandButton binding="#{spking}" value="Speaking"   onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(spking.value)}"/> 
+                          widgetVar="salir" dynamic="true" closable="true" modal="true" draggable="false" id="skillsModal" >
+                    <h:commandButton binding="#{lsting}" value="Listening" class="btnListening"  onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(lsting.value)}"/>
+                    <h:commandButton binding="#{reding}" value="Reading" class="btnReading" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(reding.value)}"/>
+                    <h:commandButton binding="#{grming}" value="Grammar" class="btnGrammar" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(grming.value)}"/>
+                    <h:commandButton binding="#{spking}" value="Speaking" class="btnSpeaking" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(spking.value)}"/> 
                 </p:dialog>
             </h:form>
         </ui:define>

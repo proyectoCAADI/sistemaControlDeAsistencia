@@ -48,6 +48,7 @@ function validate(){
         }else{
             err2.style.display = "none";
             check(nua);
+            PF("entrar").show;
         }
     }
 }
