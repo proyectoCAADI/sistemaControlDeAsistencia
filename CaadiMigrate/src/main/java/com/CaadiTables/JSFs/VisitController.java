@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -22,6 +23,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import org.primefaces.context.RequestContext;
 
 @Named("visitController")
 @SessionScoped
@@ -34,13 +36,44 @@ public class VisitController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private String NuaPlano;
+    
+    private UIComponent mensaje;
+
+    public UIComponent getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(UIComponent mensaje) {
+        this.mensaje = mensaje;
+    }
+    
+    public void validar(){
+       
+        
+    }
+    
+    
+    
+    public void mostrarDialogoIngreso(){
+        if( current.getNua() != null )
+            RequestContext.getCurrentInstance().execute("PF('entrar').show();");
+        else         
+            FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "NUA Incorrecto o Vacio", null));
+          
+    }
+    
+    public void mostrarDialogoSalida(){
+        if( current.getNua() != null && Herramientas.containsKeyInHash( current.getNua().getNua()) == true )
+            RequestContext.getCurrentInstance().execute("PF('salir').show();");           
+        else       
+            FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "NUA Incorrecto o Vacio", null));
+    }
 
     
     public void logInAsStudent (){          
         if( current.getNua() != null ){
-            System.out.println("El estudiante esta en la db");
             
-            // ver si la sesion ya esta en el hash 
+            // ver si la sesion no esta en el hash 
             if ( !Herramientas.containsKeyInHash( current.getNua().getNua()) ){
                 
                 // conseguir las referencias a los objetos 
@@ -57,23 +90,18 @@ public class VisitController implements Serializable {
                 // meter el perfil en el hash
                 Herramientas.putInHash(current.getNua().getNua(), nuevoPerfil);
                 
-                System.out.println("perfil insertado correctamente. Ya puedes empesar super caadi!");
+                FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_INFO, "Puedes empezar", null));
             }
             else
-                System.out.println("el usuario ya esta loggeado");
+                FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "Ya esta registrado", null));
         }
-        else
-            System.out.println("el estudainte no esta en la db");
-        
     }
-    
     
     public void logOutAsStudent ( String skill ){
         if( current.getNua() != null ){
             // buscar el perfil en el hash de sesiones 
         PerfilBase pb = (PerfilBase)Herramientas.findObjectInHashByKey(current.getNua().getNua()); 
-            System.out.println("perfil encontrado... procediendo a desconectar");
-            
+        
             // llenar los valores faltantes 
             pb.getInfoVst().setEnd( new Date() );
             pb.getInfoVst().setSkill(skill);
@@ -81,13 +109,12 @@ public class VisitController implements Serializable {
             // persistir el objeto
             getFacade().create( pb.getInfoVst() );
             
-            // eliminar el perfil del hash
-            Herramientas.removeFromHashByKey( pb.getInfoEst().getNua() );
+            FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_INFO, "Hasta luego", null));
             
-            System.out.println("cecion cerrada correctamente hasta luego!");            
+            // eliminar el perfil del hash
+            Herramientas.removeFromHashByKey( pb.getInfoEst().getNua() );  
+            
         }
-        else
-            System.out.println("El estudiante no esta logeado! no se encontro sesion");
     }
     
     
