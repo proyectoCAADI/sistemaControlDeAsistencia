@@ -1,7 +1,5 @@
 /CaadiMigracion/target/
 /CaadiMigracion/nbproject/
 /CaadiMigrate/target/
-!*.xhtml
-!*.css
-!*.java
-!*.js
+
+*.xml
