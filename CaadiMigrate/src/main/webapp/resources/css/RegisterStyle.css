@@ -50,8 +50,10 @@ body{
     border-radius: 5px !important;
     box-shadow: 0 9px 9px 0 rgba(0,0,0,0.2), 0 2px 20px 0 rgba(0,0,0,0.1);
 }
+
 #txtNUA{
-    margin: 15px 0 0 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
     color: black;
     background-color: white;
     border: 1px solid darkgray;
@@ -139,7 +141,7 @@ body{
     margin: -5px 0 25px 28%;
 }
 
-#btnGrammar, #btnListening, #btnReading, #btnSpeaking{
+.btnGrammar, .btnListening, .btnReading, .btnSpeaking{
     background-color: rgb(23, 77, 135);
     color: white;
     border: 1px solid rgb(23, 77, 135);
@@ -152,25 +154,25 @@ body{
     margin-left: 22.8%;
 }
 
-#btnGrammar{
+.btnGrammar{
     background-color: rgb(23, 77, 135);
     color: white;
     border: 1px solid rgb(23, 77, 135);
 }
 
-#btnListening{
+.btnListening{
     background-color: darkgray;
     color: white;
     border: 1px solid darkgray;
 }
 
-#btnReading{
+.btnReading{
     background-color: orange;
     color: white;
     border: 1px solid orange;
 }
 
-#btnSpeaking{
+.btnSpeaking{
     background-color: green;
     color: white;
     border: 1px solid green;
@@ -182,22 +184,26 @@ body{
     cursor: pointer;
 }
 
-#btnListening:hover{
+.btnListening:hover{
     background-color: gray;
     border: 1px solid gray;
     cursor: pointer;
 }
 
-#btnReading:hover{
+.btnReading:hover{
     background-color: darkorange;
     border: 1px solid darkorange;
     cursor: pointer;
 }
 
-#btnSpeaking:hover{
+.btnSpeaking:hover{
     background-color: darkgreen;
     border: 1px solid darkgreen;
     cursor: pointer;
+}
+
+.panelGrid{
+    background-color: rgba(0,0,0,0);
 }
 
 /* Animacion de entrada para el modal */
