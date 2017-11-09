@@ -10,7 +10,6 @@
         <ui:composition template="Plantillas/Bases/PlantillaBase_TresPartes.xhtml">
         <ui:define name="content">
             
-<<<<<<< HEAD
             <h:form id="formulario" class="container"  >
                 
                 <h:panelGrid columns="1" >
@@ -24,41 +23,23 @@
                     
                     <p:commandButton class="btn btn-primary btn-block"  value="Salir"    action ="#{visitController.mostrarDialogoSalida()}"/>
          
+       
                 
-                <p:dialog header="infos" position="center" responsive="true" resizable="true" class="formulario"
-=======
-            <h:form id="formulario" class="container">
-                <p:inputText label="NUA" id="txtNUA"  requiredMessage="NUA es obligatorio"
-                             value="#{visitController.selected.nua}"   required="true" maxlength="6" placeholder="Teclea tu NUA"
-                             class="form-control" onchange="validate"/>
-
-                <p:commandButton  value="Ingresar" onclick="PF('entrar').show();" class="btn btn-primary btn-block" />
-                <p:commandButton type="button" value="Salir"    onclick="PF('salir').show();" class="btn btn-primary btn-block"/>
-                
-                <p:dialog header="Confirmaci&oacute;n" position="center" responsive="true" resizable="false" class="formulario"
->>>>>>> feature/fixViews
-                          widgetVar="entrar" dynamic="true" closable="true" modal="true" draggable="false" >
-                    <h:commandButton type="button" value="Aceptar"  onclick="PF('entrar').hide();" action="#{visitController.logInAsStudent()}"
+                    <p:dialog header="Confirmaci&oacute;n" position="center" responsive="true" resizable="false"   class="formulario"
+                              widgetVar="entrar" dynamic="true" closable="true" modal="true" maximizable="false" minimizable="false"  >
+                    <h:commandButton  value="Aceptar"  onclick="PF('entrar').hide();" action="#{visitController.logInAsStudent()}"
                                      class="btn btn-primary btn-block" /> <br></br>
-                    <h:commandButton type="button"  value="Cancelar" onclick="PF('entrar').hide();" class="btn btn-primary btn-block"/>
+                    <h:commandButton  type="button" value="Cancelar" onclick="PF('entrar').hide();" class="btn btn-primary btn-block"/>
                 </p:dialog>
                 
-<<<<<<< HEAD
-                <p:dialog header="infos" position="center" responsive="true" resizable="true" class="formulario"
-                          widgetVar="salir" dynamic="true" closable="true" modal="true" draggable="false" >
-                    <h:commandButton binding="#{lsting}" value="Listening"  onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(lsting.value)}"  />
-                    <h:commandButton binding="#{reding}" value="Reading"    onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(reding.value)}"/>
-                    <h:commandButton binding="#{grming}" value="Grammar"    onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(grming.value)}"  />
-                    <h:commandButton binding="#{spking}" value="Speaking"   onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(spking.value)}"/> 
-=======
-                <p:dialog header="infos" position="center" responsive="true" resizable="false" class="formulario"
-                          widgetVar="salir" dynamic="true" closable="true" modal="true" draggable="false" id="skillsModal" >
+                    <p:dialog header="infos" position="center" responsive="true" resizable="false" maximizable="false" minimizable="false"   class="formulario"
+                          widgetVar="salir" dynamic="true" closable="true" modal="true" id="skillsModal" >
                     <h:commandButton binding="#{lsting}" value="Listening" class="btnListening"  onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(lsting.value)}"/>
                     <h:commandButton binding="#{reding}" value="Reading" class="btnReading" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(reding.value)}"/>
                     <h:commandButton binding="#{grming}" value="Grammar" class="btnGrammar" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(grming.value)}"/>
                     <h:commandButton binding="#{spking}" value="Speaking" class="btnSpeaking" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(spking.value)}"/> 
->>>>>>> feature/fixViews
                 </p:dialog>
+                    
                 </h:panelGrid>
             </h:form>
         </ui:define>
