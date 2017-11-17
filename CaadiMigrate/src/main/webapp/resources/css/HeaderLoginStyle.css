@@ -1,0 +1,21 @@
+.banner{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 25.6%;
+    font-family: Helvetica, Arial, sans-serif;
+    background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%);
+    border-bottom: 8px solid #A0935F;
+}
+
+#imageBanner{
+    position: absolute;
+    top: 3.3%;
+    left: 40.35%;
+    vertical-align: center;
+    height: 103.516px;
+    background-color: rgba(0,0,0,0);
+    width: 250px;
+    line-height: 20px;
+}
