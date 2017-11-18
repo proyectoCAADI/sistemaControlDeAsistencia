@@ -58,15 +58,21 @@ public class VisitController implements Serializable {
         if( current.getNua() != null )
             RequestContext.getCurrentInstance().execute("PF('entrar').show();");
         else         
-            FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "NUA Incorrecto o Vacio", null));
-          
+        {
+            FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "NUA Incorrecto o Vacio", null));   
+            RequestContext.getCurrentInstance().execute("limpiarTxtNUA();"); 
+        }
     }
     
     public void mostrarDialogoSalida(){
         if( current.getNua() != null && Herramientas.containsKeyInHash( current.getNua().getNua()) == true )
-            RequestContext.getCurrentInstance().execute("PF('salir').show();");           
+            RequestContext.getCurrentInstance().execute("PF('salir').show();");       
+        
         else       
+        {
             FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "NUA Incorrecto o Vacio", null));
+            RequestContext.getCurrentInstance().execute("limpiarTxtNUA();"); 
+        }
     }
 
     
@@ -94,13 +100,15 @@ public class VisitController implements Serializable {
             }
             else
                 FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "Ya esta registrado", null));
+                  
+            current.getNua().setNua("");
         }
     }
     
     public void logOutAsStudent ( String skill ){
         if( current.getNua() != null ){
             // buscar el perfil en el hash de sesiones 
-        PerfilBase pb = (PerfilBase)Herramientas.findObjectInHashByKey(current.getNua().getNua()); 
+            PerfilBase pb = (PerfilBase)Herramientas.findObjectInHashByKey(current.getNua().getNua()); 
         
             // llenar los valores faltantes 
             pb.getInfoVst().setEnd( new Date() );
@@ -114,6 +122,7 @@ public class VisitController implements Serializable {
             // eliminar el perfil del hash
             Herramientas.removeFromHashByKey( pb.getInfoEst().getNua() );  
             
+            current.getNua().setNua("");
         }
     }
     
