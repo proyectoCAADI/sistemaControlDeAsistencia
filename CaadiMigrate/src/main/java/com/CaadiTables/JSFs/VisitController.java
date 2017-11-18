@@ -73,6 +73,7 @@ public class VisitController implements Serializable {
             FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "NUA Incorrecto o Vacio", null));
             RequestContext.getCurrentInstance().execute("limpiarTxtNUA();"); 
         }
+            RequestContext.getCurrentInstance().execute("PF('salir').show();");           
     }
 
     
@@ -100,7 +101,7 @@ public class VisitController implements Serializable {
             }
             else
                 FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "Ya esta registrado", null));
-                  
+              
             current.getNua().setNua("");
         }
     }
@@ -121,7 +122,6 @@ public class VisitController implements Serializable {
             
             // eliminar el perfil del hash
             Herramientas.removeFromHashByKey( pb.getInfoEst().getNua() );  
-            
             current.getNua().setNua("");
         }
     }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTeachersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTeachersLabel_employeeNumber}" for="employeeNumber" />
+                    <h:inputText id="employeeNumber" value="#{teachersController.selected.employeeNumber}" title="#{bundle.EditTeachersTitle_employeeNumber}" required="true" requiredMessage="#{bundle.EditTeachersRequiredMessage_employeeNumber}"/>
+                    <h:outputLabel value="#{bundle.EditTeachersLabel_firstLastName}" for="firstLastName" />
+                    <h:inputText id="firstLastName" value="#{teachersController.selected.firstLastName}" title="#{bundle.EditTeachersTitle_firstLastName}" required="true" requiredMessage="#{bundle.EditTeachersRequiredMessage_firstLastName}"/>
+                    <h:outputLabel value="#{bundle.EditTeachersLabel_secondLastName}" for="secondLastName" />
+                    <h:inputText id="secondLastName" value="#{teachersController.selected.secondLastName}" title="#{bundle.EditTeachersTitle_secondLastName}" required="true" requiredMessage="#{bundle.EditTeachersRequiredMessage_secondLastName}"/>
+                    <h:outputLabel value="#{bundle.EditTeachersLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{teachersController.selected.name}" title="#{bundle.EditTeachersTitle_name}" required="true" requiredMessage="#{bundle.EditTeachersRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.EditTeachersLabel_gender}" for="gender" />
+                    <h:inputText id="gender" value="#{teachersController.selected.gender}" title="#{bundle.EditTeachersTitle_gender}" required="true" requiredMessage="#{bundle.EditTeachersRequiredMessage_gender}"/>
+                    <h:outputLabel value="#{bundle.EditTeachersLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{teachersController.selected.email}" title="#{bundle.EditTeachersTitle_email}" />
+                </h:panelGrid>
+                <h:commandLink action="#{teachersController.update}" value="#{bundle.EditTeachersSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTeachersViewLink}"/>
+                <br />
+                <h:commandLink action="#{teachersController.prepareList}" value="#{bundle.EditTeachersShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTeachersIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
