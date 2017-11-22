@@ -11,8 +11,8 @@
         <ui:define name="content">           
             <h:form id="formulario" class="form-horizontal" >
                     <h:panelGrid columns="1" columnClasses="form-group">
-                        <p:inputText label="NUA" id="txtNUA"   
-                                     value="#{visitController.selected.nua}"  placeholder="NUA"  maxlength="6"/>  
+                        <p:inputText label="NUA" class="txtNUA"   
+                                     value="#{visitController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>  
                         <p:separator/>
 
                         <p:messages  for="txtNUA" showIcon="false" autoUpdate="true" closable="true" />
@@ -20,7 +20,7 @@
                         <p:commandButton class="btn btn-primary btn-block"  value="Ingresar" action ="#{visitController.mostrarDialogoIngreso()}"/>
 
                         <p:commandButton class="btn btn-primary btn-block"  value="Salir"    action ="#{visitController.mostrarDialogoSalida()}"/>
-                        <h:link value="Conectados" outcome="Conectados"/>
+<!--                        <h:link value="Conectados" outcome="Conectados"/> -->
                     </h:panelGrid>
 
 

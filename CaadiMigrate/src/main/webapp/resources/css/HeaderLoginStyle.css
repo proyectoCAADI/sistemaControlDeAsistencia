@@ -19,3 +19,59 @@
     width: 250px;
     line-height: 20px;
 }
+
+.nav-bar{
+    position: absolute;
+    top: 18%;
+    left: 83.5%;
+    font-family: Gandhi Serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.nav .logIn {
+    background-color: rgba(0,0,0,0);
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    color: white;
+
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav > li {
+    float: left;
+}
+
+.nav li a:hover {
+    background-color: white;
+    color: rgb(14, 52, 91);
+}
+
+.nav ul {
+    display: none;
+    position: absolute;
+    min-width: 20px;
+}
+
+.nav li:hover ul {
+    display: block;
+    background-color: none;
+}
+
+.nav li ul li {
+    position: relative;
+}
+
+.messages li ul li {
+    position: relative;
+}
+
+.nav li ul li ul {
+    right: -100px;
+    top: 0px;
+}
