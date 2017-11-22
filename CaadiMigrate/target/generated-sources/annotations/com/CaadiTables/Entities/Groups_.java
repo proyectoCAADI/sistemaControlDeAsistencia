@@ -8,7 +8,11 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
+<<<<<<< HEAD
 @Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2017-11-19T01:31:11")
+=======
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2017-11-20T23:56:26")
+>>>>>>> feature/menuAndTableStyle
 @StaticMetamodel(Groups.class)
 public class Groups_ { 
 
