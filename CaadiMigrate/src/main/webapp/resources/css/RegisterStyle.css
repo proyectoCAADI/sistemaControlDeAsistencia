@@ -51,7 +51,7 @@ body{
     box-shadow: 0 9px 9px 0 rgba(0,0,0,0.2), 0 2px 20px 0 rgba(0,0,0,0.1);
 }
 
-#txtNUA{
+.txtNUA{
     margin-top: 15px;
     margin-bottom: 15px;
     color: black;
@@ -61,7 +61,7 @@ body{
     border-radius: 4px !important;
     height: 35px;
     width: 235px;
-    text-align: center;
+    text-align: center !important;
 }
 
 #errMessage1, #errMessage2{

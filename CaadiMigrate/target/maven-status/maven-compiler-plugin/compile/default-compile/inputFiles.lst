@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /home/frodo/Documentos/Repos/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/util/PaginationHelper.java
 /home/frodo/Documentos/Repos/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/PagesObejects/PageObjectIndex.java
 /home/frodo/Documentos/Repos/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/VisitController.java
@@ -22,6 +23,8 @@
 /home/frodo/Documentos/Repos/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/PeriodsFacade.java
 /home/frodo/Documentos/Repos/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Entities/Teachers.java
 =======
+=======
+>>>>>>> b2dad42db2a6dc16b853312cb672e943caab1cfa
 /home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/util/Herramientas.java
 /home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/util/JsfUtil.java
 /home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/VisitController.java
@@ -44,4 +47,7 @@
 /home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/util/PaginationHelper.java
 /home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/GroupsFacade.java
 /home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/AbstractFacade.java
+<<<<<<< HEAD
 >>>>>>> feature/menuAndTableStyle
+=======
+>>>>>>> b2dad42db2a6dc16b853312cb672e943caab1cfa

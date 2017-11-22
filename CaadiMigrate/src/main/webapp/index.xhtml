@@ -12,8 +12,13 @@
             <h:form id="formulario" class="form-horizontal" >
                     <h:panelGrid columns="1" columnClasses="form-group">
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <p:inputText label="NUA" id="txtNUA"   
                                      value="#{visitController.selected.nua}"  placeholder="NUA"  maxlength="6"/>  
+=======
+                        <p:inputText label="NUA" class="txtNUA"   
+                                     value="#{visitController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>  
+>>>>>>> b2dad42db2a6dc16b853312cb672e943caab1cfa
                         <p:separator/>
 =======
                         <p:inputText label="NUA" id="txtNUA"   binding="#{visitController.mensaje}" 
@@ -24,7 +29,7 @@
 
                         <p:commandButton class="btn btn-primary btn-block"  value="Ingresar" action ="#{visitController.mostrarDialogoIngreso()}"/>
                         <p:commandButton class="btn btn-primary btn-block"  value="Salir"    action ="#{visitController.mostrarDialogoSalida()}"/>
-                        <h:link value="Conectados" outcome="Conectados"/>
+<!--                        <h:link value="Conectados" outcome="Conectados"/> -->
                     </h:panelGrid>
                 
                  <p:dialog header="Confirmaci&oacute;n" position="center" responsive="true" resizable="false"   class="formulario"
