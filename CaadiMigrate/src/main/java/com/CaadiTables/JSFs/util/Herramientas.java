@@ -1,6 +1,7 @@
 
 package com.CaadiTables.JSFs.util;
 
+import java.util.Map;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,7 +14,9 @@ public class Herramientas {
     private static final EntityManager        em  = emf.createEntityManager();
     
 
-    
+    public static Map<String,Object> GetHash(){  
+        return FacesContext.getCurrentInstance().getExternalContext().getSessionMap(); 
+    }
     
     /** meter una clave en el hash **/
     public static void putInHash ( String key, Object objeto ){

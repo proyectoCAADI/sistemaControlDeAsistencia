@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>      
+
+    <h:body>
+
+        <ui:composition template="Plantillas/Bases/PlantillaBase_TresPartes.xhtml">
+
+            <ui:define name="content">
+                <h:form id="formulario">
+                    <h:outputLabel  value="No hay usuarios Conectados!" 
+                                   rendered="#{visitController.listarHashContent().size() eq 0}" />
+                    <h:dataTable value="#{visitController.listarHashContent()}" var="perfil" 
+                                 rendered="#{visitController.listarHashContent().size() > 0}"
+                                 border="2"
+                                 >
+                        
+                        <h:column>
+                            <f:facet name="header" >
+                                <h:outputLabel value="NUA"/>
+                            </f:facet>
+                            <h:outputLabel value="#{perfil.infoEst.nua}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">  
+                                <h:outputLabel value=" Informacion"/>
+                            </f:facet> 
+                            <h:outputLabel value="#{perfil.infoEst.nua}"/>
+                            <h:outputLabel value=" Nombre: #{perfil.infoEst.name}"/>
+                            <h:outputLabel value=" Inicio: #{perfil.infoVst.start}"/>
+                            <h:outputLabel value=" Delta : #{visitController.calcularDeltaFechas( perfil.infoVst.start )}"/>
+                            <h:outputLabel value=" Material En uso"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Opciones"/>
+                            </f:facet> 
+                            <h:commandButton value="Desconectar"/>
+                            <h:commandButton value="Revisar"/>
+                        </h:column>
+                    
+                    </h:dataTable>
+                    
+                </h:form>
+                
+                
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>

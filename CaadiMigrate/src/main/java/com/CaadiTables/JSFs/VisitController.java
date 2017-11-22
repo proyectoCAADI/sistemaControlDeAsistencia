@@ -10,7 +10,10 @@ import com.CaadiTables.JSFs.util.Herramientas;
 import com.PerfilBase.PerfilBase;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -66,16 +69,42 @@ public class VisitController implements Serializable {
     
     public void mostrarDialogoSalida(){
         if( current.getNua() != null && Herramientas.containsKeyInHash( current.getNua().getNua()) == true )
-            RequestContext.getCurrentInstance().execute("PF('salir').show();");       
-        
+            RequestContext.getCurrentInstance().execute("PF('salir').show();");           
         else       
         {
             FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "NUA Incorrecto o Vacio", null));
             RequestContext.getCurrentInstance().execute("limpiarTxtNUA();"); 
-        }
-            RequestContext.getCurrentInstance().execute("PF('salir').show();");           
+        }        
     }
 
+    // regresar una lista con el contenido de los elementos del hash de sesiones
+    public  List<PerfilBase> listarHashContent (){
+        
+        List<PerfilBase> perfiles = new ArrayList<PerfilBase>();
+        
+        Map<String,Object> CurrentHash = Herramientas.GetHash();
+        
+        for( Map.Entry<String,Object> entrada : CurrentHash.entrySet() ){
+            
+            try{
+                PerfilBase perfil = (PerfilBase)entrada.getValue();
+                perfiles.add( perfil );
+            }
+            catch( Exception ex ){
+                continue;
+            }
+        }
+             
+        return perfiles;
+    }
+    
+    
+    public String calcularDeltaFechas ( Date fechaInicio ){
+        
+        Long delta = new Date().getTime() - fechaInicio.getTime()/(1000 * 60 * 60 * 24);
+        return delta.toString();
+        
+    }
     
     public void logInAsStudent (){          
         if( current.getNua() != null ){
@@ -92,7 +121,7 @@ public class VisitController implements Serializable {
                 // crear un nuevo perfil 
                 PerfilBase nuevoPerfil = new PerfilBase ();
                 nuevoPerfil.setInfoEst( current.getNua() );
-                nuevoPerfil.setInfoVst(current);
+                nuevoPerfil.setInfoVst( current );
                
                 // meter el perfil en el hash
                 Herramientas.putInHash(current.getNua().getNua(), nuevoPerfil);
@@ -102,7 +131,7 @@ public class VisitController implements Serializable {
             else
                 FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "Ya esta registrado", null));
               
-            current.getNua().setNua("");
+           RequestContext.getCurrentInstance().execute("limpiarTxtNUA();"); 
         }
     }
     

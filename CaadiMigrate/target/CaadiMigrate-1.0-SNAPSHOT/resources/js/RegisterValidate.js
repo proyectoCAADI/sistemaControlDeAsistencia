@@ -34,6 +34,11 @@ function validateEntrada(){
         PF("entrar").show();
 }
 
+function limpiarTxtNUA(){
+
+    document.getElementById("formulario:txtNUA").value = '';
+}
+
 
 function validateSalida(){
     var nua = document.getElementById("formulario:txtNUA");
