@@ -1,7 +1,7 @@
 
 footer{
     position: absolute;
-    top: 86%;
+    bottom: 0;
     left: 4.5%;
     text-decoration-style: block;
     background-color: rgb(229, 229, 229);
