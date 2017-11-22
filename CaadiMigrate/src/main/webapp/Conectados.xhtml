@@ -11,7 +11,7 @@
         <ui:composition template="Plantillas/Bases/PlantillaBaseAdministrador.xhtml">
 
             <ui:define name="content">
-                <h:form id="formulario">
+                <h:form id="formConected" >
                     <h:outputLabel  value="¡No hay usuarios conectados!" class="noUsersConected"
                                    rendered="#{visitController.listarHashContent().size() eq 0}" />
                     <h:dataTable value="#{visitController.listarHashContent()}" var="perfil" 

@@ -3,3 +3,16 @@
     font-size: 28px;
     text-align: center;
 }
+
+#formConected{
+    position: absolute;
+    font-family: Ghandi;
+    color: #7E7E7E;
+    background-color: rgb(230, 230, 230);
+    padding: 14px;
+    top: 20%;
+    left: 36%;
+    width: 350px;
+    border-radius: 5px !important;
+    box-shadow: 0 9px 9px 0 rgba(0,0,0,0.2), 0 2px 20px 0 rgba(0,0,0,0.1);
+}
