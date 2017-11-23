@@ -74,8 +74,13 @@
             <artifactId>javax.persistence</artifactId>
             <version>SNAPSHOT</version>
             <scope>provided</scope>
+<<<<<<< HEAD
         </dependency> -->
         <dependency>
+=======
+        </dependency>
+-->        <dependency>
+>>>>>>> feature/tableStyles
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.3.1.Final</version>
