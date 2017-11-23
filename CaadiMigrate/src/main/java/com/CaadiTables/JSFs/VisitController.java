@@ -28,6 +28,8 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
+
+        
 @Named("visitController")
 @SessionScoped
 public class VisitController implements Serializable {
@@ -55,8 +57,7 @@ public class VisitController implements Serializable {
         
     }
     
-    
-    
+
     public void mostrarDialogoIngreso(){
         if( current.getNua() != null )
             RequestContext.getCurrentInstance().execute("PF('entrar').show();");
@@ -122,6 +123,7 @@ public class VisitController implements Serializable {
                 PerfilBase nuevoPerfil = new PerfilBase ();
                 nuevoPerfil.setInfoEst( current.getNua() );
                 nuevoPerfil.setInfoVst( current );
+                nuevoPerfil.setInfoLibro( current.getLibro() );
                
                 // meter el perfil en el hash
                 Herramientas.putInHash(current.getNua().getNua(), nuevoPerfil);
@@ -351,7 +353,7 @@ public class VisitController implements Serializable {
             }
             if (object instanceof Visit) {
                 Visit o = (Visit) object;
-                return getStringKey(o.getId());
+                return getStringKey(o.getVisitPK().getId());
             } else {
                 throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Visit.class.getName());
             }

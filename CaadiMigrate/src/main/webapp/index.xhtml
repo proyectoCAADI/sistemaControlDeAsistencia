@@ -11,25 +11,16 @@
         <ui:define name="content">           
             <h:form id="formulario" class="form-horizontal" >
                     <h:panelGrid columns="1" columnClasses="form-group">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <p:inputText label="NUA" id="txtNUA"   
-                                     value="#{visitController.selected.nua}"  placeholder="NUA"  maxlength="6"/>  
-=======
                         <p:inputText label="NUA" class="txtNUA"   
                                      value="#{visitController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>  
->>>>>>> b2dad42db2a6dc16b853312cb672e943caab1cfa
+                        
                         <p:separator/>
-=======
-                        <p:inputText label="NUA" id="txtNUA"   binding="#{visitController.mensaje}" 
-                                     value="#{visitController.selected.nua}"  placeholder="NUA"  maxlength="6"/>
->>>>>>> feature/menuAndTableStyle
 
                         <p:messages  for="txtNUA" showIcon="false" autoUpdate="true" closable="true" />
 
                         <p:commandButton class="btn btn-primary btn-block"  value="Ingresar" action ="#{visitController.mostrarDialogoIngreso()}"/>
                         <p:commandButton class="btn btn-primary btn-block"  value="Salir"    action ="#{visitController.mostrarDialogoSalida()}"/>
-<!--                        <h:link value="Conectados" outcome="Conectados"/> -->
+                        <h:link value="Conectados" outcome="Conectados"/> 
                     </h:panelGrid>
                 
                  <p:dialog header="Confirmaci&oacute;n" position="center" responsive="true" resizable="false"   class="formulario"
@@ -37,23 +28,15 @@
                         <h:commandButton  value="Aceptar"  onclick="PF('entrar').hide();" action="#{visitController.logInAsStudent()}"
                                          class="btn btn-primary btn-block" /> <br></br>
                         <h:commandButton  type="button" value="Cancelar" onclick="PF('entrar').hide();" class="btn btn-primary btn-block"/>
-                    </p:dialog>
+                </p:dialog>
                 
                 <p:dialog header="infos" position="center" responsive="true" resizable="false" maximizable="false" minimizable="false"   class="formulario"
                           widgetVar="salir" dynamic="true" closable="true" modal="true" id="skillsModal" >
-<<<<<<< HEAD
                     <h:commandButton binding="#{lsting}" value="Listening" class="btnListening"  onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(lsting.value)}"/>
                     <h:commandButton binding="#{reding}" value="Reading" class="btnReading" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(reding.value)}"/>
                     <h:commandButton binding="#{grming}" value="Grammar" class="btnGrammar" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(grming.value)}"/>
                     <h:commandButton binding="#{spking}" value="Speaking" class="btnSpeaking" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(spking.value)}"/> 
                 </p:dialog>              
-=======
-                        <h:commandButton binding="#{lsting}" value="Listening" class="btnListening"  onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(lsting.value)}"/>
-                        <h:commandButton binding="#{reding}" value="Reading" class="btnReading" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(reding.value)}"/>
-                        <h:commandButton binding="#{grming}" value="Grammar" class="btnGrammar" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(grming.value)}"/>
-                        <h:commandButton binding="#{spking}" value="Speaking" class="btnSpeaking" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(spking.value)}"/> 
-                    </p:dialog>
->>>>>>> feature/menuAndTableStyle
             </h:form>
         </ui:define>
         </ui:composition>

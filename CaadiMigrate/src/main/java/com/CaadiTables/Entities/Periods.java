@@ -60,6 +60,8 @@ public class Periods implements Serializable {
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodId")
     private Collection<Visit> visitCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodId")
+    private Collection<Groups> groupsCollection;
 
     public Periods() {
     }
@@ -113,6 +115,15 @@ public class Periods implements Serializable {
 
     public void setVisitCollection(Collection<Visit> visitCollection) {
         this.visitCollection = visitCollection;
+    }
+
+    @XmlTransient
+    public Collection<Groups> getGroupsCollection() {
+        return groupsCollection;
+    }
+
+    public void setGroupsCollection(Collection<Groups> groupsCollection) {
+        this.groupsCollection = groupsCollection;
     }
 
     @Override

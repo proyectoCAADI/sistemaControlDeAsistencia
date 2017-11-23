@@ -5,16 +5,19 @@
  */
 package com.PerfilBase;
 
+import com.CaadiTables.Entities.Libro;
 import com.CaadiTables.Entities.Periods;
+
 import com.CaadiTables.Entities.Students;
 import com.CaadiTables.Entities.Visit;
 
 
 public class PerfilBase {
     
-    private Students InfoEst;
-    private Visit    InfoVst;
-    private Periods  InfoPrd;
+    private Students        InfoEst;
+    private Visit           InfoVst;
+    private Periods         InfoPrd;
+    private Libro           InfoLibro;
     
     
     public PerfilBase (){
@@ -44,6 +47,17 @@ public class PerfilBase {
     public void setInfoPrd(Periods InfoPrd) {
         this.InfoPrd = InfoPrd;
     }
+
+    public Libro getInfoLibro() {
+        return InfoLibro;
+    }
+
+    public void setInfoLibro(Libro InfoLibro) {
+        this.InfoLibro = InfoLibro;
+    }
+
+   
+    
     
     
     
