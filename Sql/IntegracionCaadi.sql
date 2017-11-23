@@ -14,6 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema CaadiIntegrada
 -- -----------------------------------------------------
+drop  schema if exists `CaadiIntegrada`;
 CREATE SCHEMA IF NOT EXISTS `CaadiIntegrada` DEFAULT CHARACTER SET utf8 ;
 USE `CaadiIntegrada` ;
 
@@ -322,7 +323,7 @@ alter table revista modify column nombre_revista varchar(101) not null;
 
 create table autor_libro
 (
-	id_libro int not null,
+	id_libro bigint not null,
     id_autor int not null,
     foreign key(id_libro)references libro(id_libro),
     foreign key (id_autor) references autor(id_autor)
@@ -334,8 +335,7 @@ create table autor(
     apellido_autorlibro varchar(20) not null
 
 );
-insert into autor_libro(nombre_autorlibro, apellido_autorlibro) values("Nico","Chavez");
-insert into autor_libro(nombre_autorlibro, apellido_autorlibro) values("Enrique","Tinoco");
+
 
 create table tipo_libro(
 	id_tipo_libro int auto_increment primary key,
@@ -357,8 +357,8 @@ insert into area_libro(area_libro) values("Writing");
 
 create table libro
 (
-	id_libro int auto_increment,
-    isbn int(13) not null,
+	id_libro bigint not null,
+    isbn int(13),
     cantidad int not null,
     id_area_libro int not null,
     año_publicacion varchar(20) not null,
@@ -384,7 +384,8 @@ create table registro_libro(
 	id_registro int auto_increment primary key,
     cod_bar bigint(20) not null,
     id_visita int(11) not null,
-    foreign key(id_visita) references `CaadiIntegrada`.`Visit`(`id`)
+    foreign key(id_visita) references `CaadiIntegrada`.`Visit`(`id`),
+    foreign key(cod_bar) references libro(id_libro)
 );
 
 
