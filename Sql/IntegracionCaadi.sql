@@ -387,7 +387,29 @@ create table registro_libro(
     foreign key(id_visita) references `CaadiIntegrada`.`Visit`(`id`),
     foreign key(cod_bar) references libro(id_libro)
 );
+create table registro_revista(
+	id_registro int auto_increment primary key,
+    id_revista int(20) not null,
+    id_visita int(11) not null,
+    foreign key(id_visita) references `CaadiIntegrada`.`Visit`(`id`),
+    foreign key(id_revista) references revista(id_revista)
+);
 
+
+create table registro_juego(
+	id_registro int auto_increment primary key,
+    id_juego int(20) not null,
+    id_visita int(11) not null,
+    foreign key(id_visita) references `CaadiIntegrada`.`Visit`(`id`),
+    foreign key(id_juego) references juego(id_juego)
+);
+create table registro_pelicula(
+	id_registro int auto_increment primary key,
+    id_pelicula int(20) not null,
+    id_visita int(11) not null,
+    foreign key(id_visita) references `CaadiIntegrada`.`Visit`(`id`),
+    foreign key(id_pelicula) references pelicula(id_pelicula)
+);
 
 
 # modificaciones nico
