@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
-  </table>
+<div id="formulario">
+   <input type="text" id="txtNUA" placeholder=" Teclea tu NUA " name="txtNUA"  onchange="validate()" onfocus="onfocus()" />
+
+    <div class="alert alert-danger" id="errMessage1">
+        Escribe s&oacute;lo n&uacute;meros
+    </div>
+
+    <div class="alert alert-danger" id="errMessage2">
+        Debe ser un n&uacute;mero de 6 d&iacute;gitos
+    </div>
+
+  <button type="button" id="boton" class="btn btn-primary btn-block" name="btnINGRESS" onclick="validate()"> Ingresar </button>
+</div>
+
+<div id="welcomeModal">
+  <div id="txtBoxModal">
+      <p id="welcomeText" align="center"> Bienvenido al CAADI: </p>
+      <p id="newUser" align="center"> Walter Alejandro Moreno Ram&iacute;rez </p>
+      <input type="submit" id="btnModal" value="Aceptar" onclick="closeWelcomeModal()">
+  </div>
+</div>
+
+<div id="skillsModal">
+  <div id="optionsModal">
+      <p id="selectSkill" align="center"> Selecciona la habilidad que trabajaste: </p>
+      <input type="submit" id="btnGrammar" value="Grammar" onclick="closeSkillsModal()"> <br>
+      <input type="submit" id="btnListening" value="Listening" onclick="closeSkillsModal()"> <br>
+      <input type="submit" id="btnReading" value="Reading" onclick="closeSkillsModal()"> <br>
+      <input type="submit" id="btnSpeaking" value="Speaking" onclick="closeSkillsModal()"> <br>
+  </div>
+</div>
+
