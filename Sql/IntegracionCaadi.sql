@@ -358,7 +358,7 @@ insert into area_libro(area_libro) values("Writing");
 create table libro
 (
 	id_libro bigint not null,
-    isbn int(13),
+    isbn bigint(13),
     cantidad int not null,
     id_area_libro int not null,
     año_publicacion varchar(20) not null,
@@ -378,6 +378,24 @@ create table libro
     foreign key(id_nivel) references nivel(id_nivel),
     #foreign key(id_autorlibro) references autor_libro(id_autorlibro),
     foreign key(id_editorial) references editorial(id_editorial)
+);
+
+create table entidad(
+id_entidad int auto_increment primary key,
+entidad varchar(200) not null
+);
+insert into entidad values(1,"Peliculas");
+insert into entidad values(2,"Libro");
+insert into entidad values(3,"Revistas");
+insert into entidad values(4,"Juegos");
+
+create table registro_material(
+	id_registro int auto_increment primary key,
+    id_entidad int not null, #Hace referencia a la tabla de arriba
+    id_material bigint not null, #id_pelicula, id_juego,etc.
+    id_visita int(11) not null,
+    foreign key(id_visita) references `CaadiIntegrada`.`Visit`(`id`),
+	foreign key(id_entidad) references entidad(id_entidad)
 );
 
 create table registro_libro(
