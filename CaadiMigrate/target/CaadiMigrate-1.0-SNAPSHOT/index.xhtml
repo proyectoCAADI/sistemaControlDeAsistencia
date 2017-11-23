@@ -11,7 +11,7 @@
         <ui:define name="content">           
             <h:form id="formulario" class="form-horizontal" >
                     <h:panelGrid columns="1" columnClasses="form-group">
-                        <p:inputText label="NUA" class="txtNUA"   
+                        <p:inputText label="NUA" class="txtNUA" binding="#{visitController.mensaje}" 
                                      value="#{visitController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>  
                         <p:separator/>
 

@@ -16,8 +16,7 @@
                                    rendered="#{visitController.listarHashContent().size() eq 0}" />
                     <h:dataTable value="#{visitController.listarHashContent()}" var="perfil" 
                                  rendered="#{visitController.listarHashContent().size() > 0}"
-                                 border="2" class="table-striped"
-                                 >
+                                 class="table table-hover">
                         
                         <h:column>
                             <f:facet name="header" >
@@ -28,21 +27,31 @@
                         
                         <h:column>
                             <f:facet name="header">  
-                                <h:outputLabel value=" Informacion"/>
+                                <h:outputLabel value="Nombre"/>
                             </f:facet> 
-                            <h:outputLabel value="#{perfil.infoEst.nua}"/>
-                            <h:outputLabel value=" Nombre: #{perfil.infoEst.name}"/>
-                            <h:outputLabel value=" Inicio: #{perfil.infoVst.start}"/>
-                            <h:outputLabel value=" Delta : #{visitController.calcularDeltaFechas( perfil.infoVst.start )}"/>
-                            <h:outputLabel value=" Material En uso"/>
+                            <h:outputLabel value="#{perfil.infoEst.name}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">  
+                                <h:outputLabel value="Hora de inicio"/>
+                            </f:facet> 
+                            <h:outputLabel value="#{perfil.infoVst.start}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">  
+                                <h:outputLabel value="Tiempo total"/>
+                            </f:facet> 
+                            <h:outputLabel value="#{visitController.calcularDeltaFechas( perfil.infoVst.start )}"/>
                         </h:column>
                         
                         <h:column>
                             <f:facet name="header">
                                 <h:outputLabel value="Opciones"/>
                             </f:facet> 
-                            <h:commandButton value="Desconectar" class="btn-danger"/>
-                            <h:commandButton value="Revisar" class="btn-info"/>
+                            <h:commandButton value="Desconectar" class="btn btn-danger"/>
+                            <h:commandButton value="Revisar" class="btn btn-info"/>
                         </h:column>
                     
                     </h:dataTable>
