@@ -109,7 +109,7 @@ public class AreaLibro implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.AreaLibro[ idAreaLibro=" + idAreaLibro + " ]";
+        return idAreaLibro.toString();
     }
     
 }

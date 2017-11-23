@@ -6,6 +6,7 @@ import com.CaadiTables.JSFs.util.PaginationHelper;
 import com.CaadiTables.Beans.VisitFacade;
 import com.CaadiTables.Entities.Periods;
 import com.CaadiTables.Entities.Students;
+import com.CaadiTables.Entities.VisitPK;
 import com.CaadiTables.JSFs.util.Herramientas;
 import com.PerfilBase.PerfilBase;
 
@@ -148,6 +149,7 @@ public class VisitController implements Serializable {
         
             // llenar los valores faltantes 
             pb.getInfoVst().setEnd( new Date() );
+            pb.getInfoVst().setVisitPK( new VisitPK( 0 , pb.getInfoLibro().getIdLibro() ) );
             pb.getInfoVst().setSkill(skill);
             
             // persistir el objeto

@@ -135,7 +135,7 @@ public class Editorial implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.Editorial[ idEditorial=" + idEditorial + " ]";
+        return idEditorial.toString();
     }
     
 }

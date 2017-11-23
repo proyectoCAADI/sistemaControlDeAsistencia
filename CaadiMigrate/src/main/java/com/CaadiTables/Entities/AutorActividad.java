@@ -118,7 +118,7 @@ public class AutorActividad implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.AutorActividad[ idAutor=" + idAutor + " ]";
+        return idAutor.toString();
     }
     
 }

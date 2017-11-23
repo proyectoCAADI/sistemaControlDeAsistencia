@@ -16,16 +16,8 @@
                                    rendered="#{visitController.listarHashContent().size() eq 0}" />
                     <h:dataTable value="#{visitController.listarHashContent()}" var="perfil" 
                                  rendered="#{visitController.listarHashContent().size() > 0}"
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                  class="table-striped"
-                                 >
-=======
+
                                  class="table table-hover">
->>>>>>> feature/tableStyles
-=======
-                                 class="table table-hover">
->>>>>>> feature/tableStyles
                         
                         <h:column>
                             <f:facet name="header" >
@@ -38,16 +30,10 @@
                             <f:facet name="header">  
                                 <h:outputLabel value="Nombre"/>
                             </f:facet> 
-<<<<<<< HEAD
-<<<<<<< HEAD
                           
                             <h:outputLabel value=" Nombre: #{perfil.infoEst.name}"/>
                             <h:outputLabel value=" Inicio: #{perfil.infoVst.start}"/>
-                            <h:outputLabel value=" Delta : #{visitController.calcularDeltaFechas( perfil.infoVst.start )}"/>
                             <h:outputLabel value=" Material En uso"/>
-=======
-=======
->>>>>>> feature/tableStyles
                             <h:outputLabel value="#{perfil.infoEst.name}"/>
                         </h:column>
 
@@ -63,28 +49,17 @@
                                 <h:outputLabel value="Tiempo total"/>
                             </f:facet> 
                             <h:outputLabel value="#{visitController.calcularDeltaFechas( perfil.infoVst.start )}"/>
-<<<<<<< HEAD
->>>>>>> feature/tableStyles
-=======
->>>>>>> feature/tableStyles
+
                         </h:column>
                         
                         <h:column>
                             <f:facet name="header">
                                 <h:outputLabel value="Opciones"/>
                             </f:facet> 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                             <h:commandButton value="Desconectar" class="btn-danger" action="#{visitController.eliminarConectado( perfil.infoEst.nua )}" />
                             <h:commandButton value="Revisar" class="btn-info"/>
-=======
-                            <h:commandButton value="Desconectar" class="btn btn-danger"/>
-                            <h:commandButton value="Revisar" class="btn btn-info"/>
->>>>>>> feature/tableStyles
-=======
-                            <h:commandButton value="Desconectar" class="btn btn-danger"/>
-                            <h:commandButton value="Revisar" class="btn btn-info"/>
->>>>>>> feature/tableStyles
+
                         </h:column>
                     
                     </h:dataTable>

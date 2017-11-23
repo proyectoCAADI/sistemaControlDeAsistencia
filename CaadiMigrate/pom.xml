@@ -69,18 +69,7 @@
             <version>2.6.1-RC1</version>
             <scope>provided</scope>
         </dependency>
-<!--        <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>javax.persistence</artifactId>
-            <version>SNAPSHOT</version>
-            <scope>provided</scope>
-<<<<<<< HEAD
-        </dependency> -->
-        <dependency>
-=======
-        </dependency>
--->        <dependency>
->>>>>>> feature/tableStyles
+      <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.3.1.Final</version>

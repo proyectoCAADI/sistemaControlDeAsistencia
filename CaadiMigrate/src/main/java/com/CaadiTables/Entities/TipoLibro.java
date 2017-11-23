@@ -109,7 +109,7 @@ public class TipoLibro implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.TipoLibro[ idTipoLibro=" + idTipoLibro + " ]";
+        return idTipoLibro.toString();
     }
     
 }
