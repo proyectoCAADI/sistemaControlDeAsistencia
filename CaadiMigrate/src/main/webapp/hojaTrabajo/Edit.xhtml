@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditHojaTrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditHojaTrabajoLabel_idHoja}" for="idHoja" />
+                    <h:inputText id="idHoja" value="#{hojaTrabajoController.selected.idHoja}" title="#{bundle.EditHojaTrabajoTitle_idHoja}" required="true" requiredMessage="#{bundle.EditHojaTrabajoRequiredMessage_idHoja}"/>
+                    <h:outputLabel value="#{bundle.EditHojaTrabajoLabel_duracionHoja}" for="duracionHoja" />
+                    <h:inputText id="duracionHoja" value="#{hojaTrabajoController.selected.duracionHoja}" title="#{bundle.EditHojaTrabajoTitle_duracionHoja}" required="true" requiredMessage="#{bundle.EditHojaTrabajoRequiredMessage_duracionHoja}"/>
+                    <h:outputLabel value="#{bundle.EditHojaTrabajoLabel_nombreHoja}" for="nombreHoja" />
+                    <h:inputText id="nombreHoja" value="#{hojaTrabajoController.selected.nombreHoja}" title="#{bundle.EditHojaTrabajoTitle_nombreHoja}" required="true" requiredMessage="#{bundle.EditHojaTrabajoRequiredMessage_nombreHoja}"/>
+                    <h:outputLabel value="#{bundle.EditHojaTrabajoLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{hojaTrabajoController.selected.fecha}" title="#{bundle.EditHojaTrabajoTitle_fecha}" required="true" requiredMessage="#{bundle.EditHojaTrabajoRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditHojaTrabajoLabel_idEstatus}" for="idEstatus" />
+                    <h:selectOneMenu id="idEstatus" value="#{hojaTrabajoController.selected.idEstatus}" title="#{bundle.EditHojaTrabajoTitle_idEstatus}" >
+                        <f:selectItems value="#{estatusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditHojaTrabajoLabel_idHabilidad}" for="idHabilidad" />
+                    <h:selectOneMenu id="idHabilidad" value="#{hojaTrabajoController.selected.idHabilidad}" title="#{bundle.EditHojaTrabajoTitle_idHabilidad}" required="true" requiredMessage="#{bundle.EditHojaTrabajoRequiredMessage_idHabilidad}">
+                        <f:selectItems value="#{habilidadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditHojaTrabajoLabel_idMaterial}" for="idMaterial" />
+                    <h:selectOneMenu id="idMaterial" value="#{hojaTrabajoController.selected.idMaterial}" title="#{bundle.EditHojaTrabajoTitle_idMaterial}" required="true" requiredMessage="#{bundle.EditHojaTrabajoRequiredMessage_idMaterial}">
+                        <f:selectItems value="#{materialApoyoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditHojaTrabajoLabel_idNivel}" for="idNivel" />
+                    <h:selectOneMenu id="idNivel" value="#{hojaTrabajoController.selected.idNivel}" title="#{bundle.EditHojaTrabajoTitle_idNivel}" required="true" requiredMessage="#{bundle.EditHojaTrabajoRequiredMessage_idNivel}">
+                        <f:selectItems value="#{nivelController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditHojaTrabajoLabel_idAutor}" for="idAutor" />
+                    <h:selectOneMenu id="idAutor" value="#{hojaTrabajoController.selected.idAutor}" title="#{bundle.EditHojaTrabajoTitle_idAutor}" required="true" requiredMessage="#{bundle.EditHojaTrabajoRequiredMessage_idAutor}">
+                        <f:selectItems value="#{autorActividadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditHojaTrabajoLabel_idIdioma}" for="idIdioma" />
+                    <h:selectOneMenu id="idIdioma" value="#{hojaTrabajoController.selected.idIdioma}" title="#{bundle.EditHojaTrabajoTitle_idIdioma}" required="true" requiredMessage="#{bundle.EditHojaTrabajoRequiredMessage_idIdioma}">
+                        <f:selectItems value="#{idiomaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditHojaTrabajoLabel_idRating}" for="idRating" />
+                    <h:selectOneMenu id="idRating" value="#{hojaTrabajoController.selected.idRating}" title="#{bundle.EditHojaTrabajoTitle_idRating}" >
+                        <f:selectItems value="#{ratingController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{hojaTrabajoController.update}" value="#{bundle.EditHojaTrabajoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditHojaTrabajoViewLink}"/>
+                <br />
+                <h:commandLink action="#{hojaTrabajoController.prepareList}" value="#{bundle.EditHojaTrabajoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditHojaTrabajoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

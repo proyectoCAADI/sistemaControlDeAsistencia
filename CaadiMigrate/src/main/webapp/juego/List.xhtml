@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListJuegoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListJuegoEmpty}" rendered="#{juegoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{juegoController.items.rowCount > 0}">
+                    <h:outputText value="#{juegoController.pagination.pageFirstItem + 1}..#{juegoController.pagination.pageLastItem + 1}/#{juegoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{juegoController.previous}" value="#{bundle.Previous} #{juegoController.pagination.pageSize}" rendered="#{juegoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{juegoController.next}" value="#{bundle.Next} #{juegoController.pagination.pageSize}" rendered="#{juegoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{juegoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_idJuego}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idJuego}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_nombreJuego}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreJuego}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_instruccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.instruccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_unidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_duracion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.duracion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_idEstatus}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstatus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_idHabilidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idHabilidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_idNivel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idNivel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_idAutor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAutor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_idIdioma}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idIdioma}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJuegoTitle_idRating}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRating}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{juegoController.prepareView}" value="#{bundle.ListJuegoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{juegoController.prepareEdit}" value="#{bundle.ListJuegoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{juegoController.destroy}" value="#{bundle.ListJuegoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{juegoController.prepareCreate}" value="#{bundle.ListJuegoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListJuegoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

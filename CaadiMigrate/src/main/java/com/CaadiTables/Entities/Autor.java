@@ -123,7 +123,7 @@ public class Autor implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.Autor[ idAutor=" + idAutor + " ]";
+        return idAutor.toString();
     }
     
 }

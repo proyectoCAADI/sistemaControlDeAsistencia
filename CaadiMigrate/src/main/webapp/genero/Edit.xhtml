@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditGeneroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditGeneroLabel_idGenero}" for="idGenero" />
+                    <h:inputText id="idGenero" value="#{generoController.selected.idGenero}" title="#{bundle.EditGeneroTitle_idGenero}" required="true" requiredMessage="#{bundle.EditGeneroRequiredMessage_idGenero}"/>
+                    <h:outputLabel value="#{bundle.EditGeneroLabel_genero}" for="genero" />
+                    <h:inputText id="genero" value="#{generoController.selected.genero}" title="#{bundle.EditGeneroTitle_genero}" required="true" requiredMessage="#{bundle.EditGeneroRequiredMessage_genero}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{generoController.update}" value="#{bundle.EditGeneroSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditGeneroViewLink}"/>
+                <br />
+                <h:commandLink action="#{generoController.prepareList}" value="#{bundle.EditGeneroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditGeneroIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRevistaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRevistaEmpty}" rendered="#{revistaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{revistaController.items.rowCount > 0}">
+                    <h:outputText value="#{revistaController.pagination.pageFirstItem + 1}..#{revistaController.pagination.pageLastItem + 1}/#{revistaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{revistaController.previous}" value="#{bundle.Previous} #{revistaController.pagination.pageSize}" rendered="#{revistaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{revistaController.next}" value="#{bundle.Next} #{revistaController.pagination.pageSize}" rendered="#{revistaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{revistaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRevistaTitle_idRevista}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRevista}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRevistaTitle_tituloRevista}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tituloRevista}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRevistaTitle_nombreRevista}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreRevista}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRevistaTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRevistaTitle_idEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRevistaTitle_idRating}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRating}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRevistaTitle_idEditorial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEditorial}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{revistaController.prepareView}" value="#{bundle.ListRevistaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{revistaController.prepareEdit}" value="#{bundle.ListRevistaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{revistaController.destroy}" value="#{bundle.ListRevistaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{revistaController.prepareCreate}" value="#{bundle.ListRevistaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListRevistaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

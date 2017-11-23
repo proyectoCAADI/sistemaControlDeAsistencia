@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditJuegoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_idJuego}" for="idJuego" />
+                    <h:inputText id="idJuego" value="#{juegoController.selected.idJuego}" title="#{bundle.EditJuegoTitle_idJuego}" required="true" requiredMessage="#{bundle.EditJuegoRequiredMessage_idJuego}"/>
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_nombreJuego}" for="nombreJuego" />
+                    <h:inputText id="nombreJuego" value="#{juegoController.selected.nombreJuego}" title="#{bundle.EditJuegoTitle_nombreJuego}" required="true" requiredMessage="#{bundle.EditJuegoRequiredMessage_nombreJuego}"/>
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_instruccion}" for="instruccion" />
+                    <h:inputText id="instruccion" value="#{juegoController.selected.instruccion}" title="#{bundle.EditJuegoTitle_instruccion}" required="true" requiredMessage="#{bundle.EditJuegoRequiredMessage_instruccion}"/>
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_unidad}" for="unidad" />
+                    <h:inputText id="unidad" value="#{juegoController.selected.unidad}" title="#{bundle.EditJuegoTitle_unidad}" required="true" requiredMessage="#{bundle.EditJuegoRequiredMessage_unidad}"/>
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_duracion}" for="duracion" />
+                    <h:inputText id="duracion" value="#{juegoController.selected.duracion}" title="#{bundle.EditJuegoTitle_duracion}" required="true" requiredMessage="#{bundle.EditJuegoRequiredMessage_duracion}"/>
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{juegoController.selected.fecha}" title="#{bundle.EditJuegoTitle_fecha}" required="true" requiredMessage="#{bundle.EditJuegoRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_idEstatus}" for="idEstatus" />
+                    <h:selectOneMenu id="idEstatus" value="#{juegoController.selected.idEstatus}" title="#{bundle.EditJuegoTitle_idEstatus}" >
+                        <f:selectItems value="#{estatusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_idHabilidad}" for="idHabilidad" />
+                    <h:selectOneMenu id="idHabilidad" value="#{juegoController.selected.idHabilidad}" title="#{bundle.EditJuegoTitle_idHabilidad}" required="true" requiredMessage="#{bundle.EditJuegoRequiredMessage_idHabilidad}">
+                        <f:selectItems value="#{habilidadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_idNivel}" for="idNivel" />
+                    <h:selectOneMenu id="idNivel" value="#{juegoController.selected.idNivel}" title="#{bundle.EditJuegoTitle_idNivel}" required="true" requiredMessage="#{bundle.EditJuegoRequiredMessage_idNivel}">
+                        <f:selectItems value="#{nivelController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_idAutor}" for="idAutor" />
+                    <h:selectOneMenu id="idAutor" value="#{juegoController.selected.idAutor}" title="#{bundle.EditJuegoTitle_idAutor}" required="true" requiredMessage="#{bundle.EditJuegoRequiredMessage_idAutor}">
+                        <f:selectItems value="#{autorActividadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_idIdioma}" for="idIdioma" />
+                    <h:selectOneMenu id="idIdioma" value="#{juegoController.selected.idIdioma}" title="#{bundle.EditJuegoTitle_idIdioma}" required="true" requiredMessage="#{bundle.EditJuegoRequiredMessage_idIdioma}">
+                        <f:selectItems value="#{idiomaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditJuegoLabel_idRating}" for="idRating" />
+                    <h:selectOneMenu id="idRating" value="#{juegoController.selected.idRating}" title="#{bundle.EditJuegoTitle_idRating}" >
+                        <f:selectItems value="#{ratingController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{juegoController.update}" value="#{bundle.EditJuegoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditJuegoViewLink}"/>
+                <br />
+                <h:commandLink action="#{juegoController.prepareList}" value="#{bundle.EditJuegoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditJuegoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

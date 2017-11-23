@@ -119,7 +119,7 @@ public class Estatus implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.Estatus[ idEstatus=" + idEstatus + " ]";
+        return idEstatus.toString();
     }
     
 }

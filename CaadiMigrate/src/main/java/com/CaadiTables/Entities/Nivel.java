@@ -131,7 +131,7 @@ public class Nivel implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.Nivel[ idNivel=" + idNivel + " ]";
+        return idNivel.toString();
     }
     
 }

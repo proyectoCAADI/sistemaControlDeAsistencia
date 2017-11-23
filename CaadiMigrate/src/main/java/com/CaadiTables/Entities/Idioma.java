@@ -142,7 +142,7 @@ public class Idioma implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.Idioma[ idIdioma=" + idIdioma + " ]";
+        return idIdioma.toString();
     }
     
 }

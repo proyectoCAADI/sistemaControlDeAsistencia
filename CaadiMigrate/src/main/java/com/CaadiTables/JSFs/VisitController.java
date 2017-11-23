@@ -57,6 +57,10 @@ public class VisitController implements Serializable {
         
     }
     
+    public void eliminarConectado(String NUA){
+        Herramientas.removeFromHashByKey(NUA);
+    }
+    
 
     public void mostrarDialogoIngreso(){
         if( current.getNua() != null )

@@ -256,7 +256,7 @@ public class Libro implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.Libro[ idLibro=" + idLibro + " ]";
+        return idLibro.toString() ;
     }
     
 }

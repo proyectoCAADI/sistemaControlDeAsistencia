@@ -120,7 +120,7 @@ public class Habilidad implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.Habilidad[ idHabilidad=" + idHabilidad + " ]";
+        return idHabilidad.toString();
     }
     
 }

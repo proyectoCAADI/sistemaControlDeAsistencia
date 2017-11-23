@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditNivelTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditNivelLabel_idNivel}" for="idNivel" />
+                    <h:inputText id="idNivel" value="#{nivelController.selected.idNivel}" title="#{bundle.EditNivelTitle_idNivel}" required="true" requiredMessage="#{bundle.EditNivelRequiredMessage_idNivel}"/>
+                    <h:outputLabel value="#{bundle.EditNivelLabel_nivel}" for="nivel" />
+                    <h:inputText id="nivel" value="#{nivelController.selected.nivel}" title="#{bundle.EditNivelTitle_nivel}" required="true" requiredMessage="#{bundle.EditNivelRequiredMessage_nivel}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{nivelController.update}" value="#{bundle.EditNivelSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditNivelViewLink}"/>
+                <br />
+                <h:commandLink action="#{nivelController.prepareList}" value="#{bundle.EditNivelShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditNivelIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

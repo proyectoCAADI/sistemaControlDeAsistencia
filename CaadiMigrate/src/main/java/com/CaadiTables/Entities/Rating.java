@@ -150,7 +150,7 @@ public class Rating implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.Rating[ idRating=" + idRating + " ]";
+        return idRating.toString();
     }
     
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAreaLibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAreaLibroLabel_idAreaLibro}" for="idAreaLibro" />
+                    <h:inputText id="idAreaLibro" value="#{areaLibroController.selected.idAreaLibro}" title="#{bundle.CreateAreaLibroTitle_idAreaLibro}" required="true" requiredMessage="#{bundle.CreateAreaLibroRequiredMessage_idAreaLibro}"/>
+                    <h:outputLabel value="#{bundle.CreateAreaLibroLabel_areaLibro}" for="areaLibro" />
+                    <h:inputText id="areaLibro" value="#{areaLibroController.selected.areaLibro}" title="#{bundle.CreateAreaLibroTitle_areaLibro}" required="true" requiredMessage="#{bundle.CreateAreaLibroRequiredMessage_areaLibro}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{areaLibroController.create}" value="#{bundle.CreateAreaLibroSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{areaLibroController.prepareList}" value="#{bundle.CreateAreaLibroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAreaLibroIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
