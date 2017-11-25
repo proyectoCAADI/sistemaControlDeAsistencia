@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSubtituloTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSubtituloEmpty}" rendered="#{subtituloController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{subtituloController.items.rowCount > 0}">
+                    <h:outputText value="#{subtituloController.pagination.pageFirstItem + 1}..#{subtituloController.pagination.pageLastItem + 1}/#{subtituloController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{subtituloController.previous}" value="#{bundle.Previous} #{subtituloController.pagination.pageSize}" rendered="#{subtituloController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{subtituloController.next}" value="#{bundle.Next} #{subtituloController.pagination.pageSize}" rendered="#{subtituloController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{subtituloController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSubtituloTitle_idSubtitulo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSubtitulo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSubtituloTitle_idiomaSubtitulo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idiomaSubtitulo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{subtituloController.prepareView}" value="#{bundle.ListSubtituloViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{subtituloController.prepareEdit}" value="#{bundle.ListSubtituloEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{subtituloController.destroy}" value="#{bundle.ListSubtituloDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{subtituloController.prepareCreate}" value="#{bundle.ListSubtituloCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSubtituloIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

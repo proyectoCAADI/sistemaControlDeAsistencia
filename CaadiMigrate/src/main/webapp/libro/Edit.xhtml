@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditLibroLabel_idLibro}" for="idLibro" />
+                    <h:inputText id="idLibro" value="#{libroController.selected.idLibro}" title="#{bundle.EditLibroTitle_idLibro}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_idLibro}"/>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_isbn}" for="isbn" />
+                    <h:inputText id="isbn" value="#{libroController.selected.isbn}" title="#{bundle.EditLibroTitle_isbn}" />
+                    <h:outputLabel value="#{bundle.EditLibroLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{libroController.selected.cantidad}" title="#{bundle.EditLibroTitle_cantidad}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_cantidad}"/>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_añoPublicacion}" for="añoPublicacion" />
+                    <h:inputText id="añoPublicacion" value="#{libroController.selected.añoPublicacion}" title="#{bundle.EditLibroTitle_añoPublicacion}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_añoPublicacion}"/>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_tituloLibro}" for="tituloLibro" />
+                    <h:inputText id="tituloLibro" value="#{libroController.selected.tituloLibro}" title="#{bundle.EditLibroTitle_tituloLibro}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_tituloLibro}"/>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_audioLibro}" for="audioLibro" />
+                    <h:inputText id="audioLibro" value="#{libroController.selected.audioLibro}" title="#{bundle.EditLibroTitle_audioLibro}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_audioLibro}"/>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_idTipoLibro}" for="idTipoLibro" />
+                    <h:selectOneMenu id="idTipoLibro" value="#{libroController.selected.idTipoLibro}" title="#{bundle.EditLibroTitle_idTipoLibro}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_idTipoLibro}">
+                        <f:selectItems value="#{tipoLibroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_idRating}" for="idRating" />
+                    <h:selectOneMenu id="idRating" value="#{libroController.selected.idRating}" title="#{bundle.EditLibroTitle_idRating}" >
+                        <f:selectItems value="#{ratingController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_idAreaLibro}" for="idAreaLibro" />
+                    <h:selectOneMenu id="idAreaLibro" value="#{libroController.selected.idAreaLibro}" title="#{bundle.EditLibroTitle_idAreaLibro}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_idAreaLibro}">
+                        <f:selectItems value="#{areaLibroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_idIdioma}" for="idIdioma" />
+                    <h:selectOneMenu id="idIdioma" value="#{libroController.selected.idIdioma}" title="#{bundle.EditLibroTitle_idIdioma}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_idIdioma}">
+                        <f:selectItems value="#{idiomaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_idNivel}" for="idNivel" />
+                    <h:selectOneMenu id="idNivel" value="#{libroController.selected.idNivel}" title="#{bundle.EditLibroTitle_idNivel}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_idNivel}">
+                        <f:selectItems value="#{nivelController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_idEditorial}" for="idEditorial" />
+                    <h:selectOneMenu id="idEditorial" value="#{libroController.selected.idEditorial}" title="#{bundle.EditLibroTitle_idEditorial}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_idEditorial}">
+                        <f:selectItems value="#{editorialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{libroController.update}" value="#{bundle.EditLibroSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditLibroViewLink}"/>
+                <br />
+                <h:commandLink action="#{libroController.prepareList}" value="#{bundle.EditLibroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditLibroIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

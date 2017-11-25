@@ -1,0 +1,19 @@
+
+.noUsersConected{
+    font-size: 26px;
+    text-align: center;
+}
+
+#formConected{
+    position: relative;
+    font-family: Ghandi;
+    color: #7E7E7E;
+    background-color: rgb(230, 230, 230);
+    padding: 14px 14px 14px 14px;
+    margin-top: 7%;
+    left: 4.5%;
+    width: 90%;
+    text-align: center;
+    border-radius: 5px !important;
+    box-shadow: 0 9px 9px 0 rgba(0,0,0,0.2), 0 2px 20px 0 rgba(0,0,0,0.1);
+}
