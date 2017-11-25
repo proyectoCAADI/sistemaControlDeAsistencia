@@ -62,7 +62,7 @@ public class VisitController implements Serializable {
             RequestContext.getCurrentInstance().execute("PF('entrar').show();");
         else         
         {
-            FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "NUA Incorrecto o Vacio", null));   
+            FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "NUA Incorrecto o Vacio", null));
             RequestContext.getCurrentInstance().execute("limpiarTxtNUA();"); 
         }
     }

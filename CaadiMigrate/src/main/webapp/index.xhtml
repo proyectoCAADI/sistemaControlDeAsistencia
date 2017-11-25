@@ -18,13 +18,9 @@
                         <p:messages  for="txtNUA" showIcon="false" autoUpdate="true" closable="true" />
 
                         <p:commandButton class="btn btn-primary btn-block"  value="Ingresar" action ="#{visitController.mostrarDialogoIngreso()}"/>
-
                         <p:commandButton class="btn btn-primary btn-block"  value="Salir"    action ="#{visitController.mostrarDialogoSalida()}"/>
-<!--                        <h:link value="Conectados" outcome="Conectados"/> -->
                     </h:panelGrid>
 
-
-                
                  <p:dialog header="Confirmaci&oacute;n" position="center" responsive="true" resizable="false"   class="formulario"
                               widgetVar="entrar" dynamic="true" closable="true" modal="true" maximizable="false" minimizable="false"  >
                     <h:commandButton  value="Aceptar"  onclick="PF('entrar').hide();" action="#{visitController.logInAsStudent()}"

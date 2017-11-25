@@ -4,6 +4,11 @@ $(document).ready(function(){
     var txtBox = document.getElementById("txtNUA");
 });
 
+function openModal(){
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+}
+
 function check(nua){
     if(( nua.value == 810243 )  && ( !flag1 )){
         openWelcomeModal();
@@ -32,6 +37,11 @@ function validateEntrada(){
 
     if(  nua.value !== "" )
         PF("entrar").show();
+}
+
+function limpiarTxtNUA(){
+
+    document.getElementById("formulario:txtNUA").value = '';
 }
 
 
@@ -64,14 +74,12 @@ function skill(value){
 
 function openWelcomeModal(){
     var modal = document.getElementById("welcomeModal");
-
     modal.style.display = "block";
 }
 
 function closeWelcomeModal(){
     var modal = document.getElementById("welcomeModal");
     modal.style.display = "none";
-    document.getElementById("txtNUA").value = '';
 }
 
 function openSkillsModal(){
@@ -94,7 +102,7 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 
-    document.getElementById("txtNUA").value = '';
+//    document.getElementById("txtNUA").value = '';
 }
 
 function notUser(){
