@@ -169,7 +169,7 @@ create table material_apoyo
 create table nivel
 (
 	id_nivel int auto_increment not null,
-    nivel varchar(2) not null,
+    nivel varchar(50) not null,
     primary key(id_nivel)
 );
 
@@ -191,9 +191,7 @@ create table idioma
     primary key(id_idioma)
 );
 
-insert into idioma(idioma) values("English");
-insert into idioma(idioma) values("French");
-insert into idioma(idioma) values("German");
+
 
 create table rating
 (
@@ -300,11 +298,9 @@ create table editorial
 (
 	id_editorial int auto_increment not null,
     nombre_editorial varchar(100) not null,
-    direccion varchar(100) not null,
+    direccion varchar(100),
     primary key(id_editorial)
 );
-insert into editorial(nombre_editorial, direccion) values("Sigma", "Av. Siempre Viva 43");
-insert into editorial(nombre_editorial, direccion) values("Watson", "Av. Flower 34");
 
 create table revista
 (
@@ -323,7 +319,7 @@ alter table revista modify column nombre_revista varchar(101) not null;
 
 create table autor_libro
 (
-	id_libro bigint not null,
+	id_libro int not null,
     id_autor int not null,
     foreign key(id_libro)references libro(id_libro),
     foreign key (id_autor) references autor(id_autor)
@@ -332,7 +328,7 @@ create table autor_libro
 create table autor(
 	id_autor int auto_increment primary key,
     nombre_autorlibro varchar(20) not null,
-    apellido_autorlibro varchar(20) not null
+    apellido_autorlibro varchar(20)
 
 );
 
@@ -342,8 +338,6 @@ create table tipo_libro(
     tipo_libro varchar(100) not null
 );
 
-insert into tipo_libro(tipo_libro) values("Answers");
-insert into tipo_libro(tipo_libro) values("Theory");
 
 
 
@@ -352,20 +346,18 @@ create table area_libro(
     area_libro varchar(100) not null
 );
 
-insert into area_libro(area_libro) values("Listening");
-insert into area_libro(area_libro) values("Writing");
 
 create table libro
 (
-	id_libro bigint not null,
-    isbn bigint(13),
+	id_libro  int auto_increment,
+    cod_bar bigint(13),
     cantidad int not null,
     id_area_libro int not null,
-    año_publicacion varchar(20) not null,
-    titulo_libro varchar(100) not null,
+    año_publicacion varchar(20),
+    titulo_libro varchar(100),
     id_tipo_libro int not null,
-    audio_libro boolean not null,
-    id_rating int default 1,
+    audio_libro boolean,
+    id_rating int not null,
     id_editorial int not null,
     id_idioma int not null,
     id_nivel int not null,
@@ -384,10 +376,11 @@ create table entidad(
 id_entidad int auto_increment primary key,
 entidad varchar(200) not null
 );
-insert into entidad values(1,"Peliculas");
+insert into entidad values(1,"Pelicula");
 insert into entidad values(2,"Libro");
-insert into entidad values(3,"Revistas");
-insert into entidad values(4,"Juegos");
+insert into entidad values(3,"Revista");
+insert into entidad values(4,"Juego");
+insert into entidad values(5,"Hoja");
 
 create table registro_material(
 	id_registro int auto_increment primary key,
