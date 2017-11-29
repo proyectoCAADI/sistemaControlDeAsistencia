@@ -44,8 +44,8 @@ ul, ol {
 
 .periodos, .profesores, .estudiantes,
 .grupos, .visitas, .usuarios {
-   padding: 8px 30px;
-   margin: 0.2em 0em 0em 0em;     
+   padding: 8px;
+   margin: .2em 0em 0em 0em;     
    display: block;
 }
 
@@ -70,11 +70,11 @@ ul, ol {
 
 .periodos, .profesores, .estudiantes,
 .grupos, .visitas, .usuarios {
-    background: rgba(14, 52, 91, 0.85);
+   
     color: white;
     text-decoration: none;
     font-size: 18px;
-    border-radius: 10px;
+
 }
 
 .nav > li {

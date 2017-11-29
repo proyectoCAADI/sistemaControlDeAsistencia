@@ -60,7 +60,8 @@ ul, ol {
 
 .nav li:hover ul {
     display: block;
-    background-color: none;
+    background-color: rgba(14,52,91,.85);
+    
 }
 
 .nav li ul li {

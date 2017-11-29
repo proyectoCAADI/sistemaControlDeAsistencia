@@ -4,30 +4,96 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     
     <h:body>
         <ui:composition template="Plantillas/Bases/PlantillaBase_TresPartes.xhtml">
-        <ui:define name="content">           
+           <ui:define name="content">
+            <b:modal id="m1" title="Bienvenido" styleClass="modal1" >
+                <p>¿Eres "Usuario" ?</p>
+                <f:facet name="footer">
+                    <b:button value="Si" class="btnModal1" look="primary" dismiss="modal" onclick="$('.modal2').modal()"/>
+                    <b:button value="No" dismiss="modal" class="btnModal1" />
+                </f:facet>
+            </b:modal>
+
+            <b:modal id="m2" title="Bienvenido a CAADI" styleClass="modal2"  >
+                <p>En tu visita a CADDI puedes usar diferente material para mejorar tu inglés. </p>
+                <p>Disfruta tu instancia en CAADI.</p>
+                <f:facet name="footer">
+                    <b:button value="Aceptar" look="primary" dismiss="modal"  class="btnModal1"/>
+                </f:facet>
+            </b:modal>
+               
+            <b:modal id="m3" title="¿Utilizaste algún libro?" styleClass="modal3" size="modal-sm" >
+                <p>Especifique si se utilizó material</p>
+                <f:facet name="footer">
+                    <b:button value="No" dismiss="modal" />
+                    <b:button value="Si" look="primary" dismiss="modal" onclick="$('.modal4').modal()"/>
+                </f:facet>
+            </b:modal>
+
+            <b:modal id="m4" title="¿Que libro utilizaste?" styleClass="modal4"  size="modal-lg" >
+               
+                <b:panelGrid colSpans="3,9" size="lg">
+                    <h:form>
+                    <b:inputText id ="libro" placeholder="Ingresa el código de barras"/>
+                    <b:button look="success" value="Agregar" icon="plus" icon-align="left" large-screen="full-width"/>
+                    </h:form>
+                    <b:panel>
+                        
+                    <h4>Lista de libros</h4>
+                    <h:form>    
+                        <b:dataTable value="tabla" var="item" searching="false" lang="es" paginated="false">
+                            <f:facet name="header">
+                                <tr>
+                                   <th>CodBar</th>
+                                   <th>Título de libro</th>
+                                   <th>Nivel</th>
+                                   <th>Opciones</th>
+                               </tr>
+                            </f:facet>
+
+                            <b:dataTableColumn value="1" />
+                            <b:dataTableColumn value="2" />
+                            <b:dataTableColumn value="3" />
+                            
+                            <b:dataTableColumn>
+                                <b:commandButton  look="info" value="Editar" icon="edit" ajax="true" update="@(.tabla)" 
+                                                  onclick="ajax:item.edit()" size="sm" tiny-screen="half" ></b:commandButton>
+                                <b:commandButton  look="danger" value="Eliminar" icon="trash" ajax="true" update="@(.tabla)" 
+                                                  onclick="ajax:item.delete()" size="sm" tiny-screen="half" ></b:commandButton>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                        </h:form>    
+                    </b:panel> 
+                </b:panelGrid>
+                
+              
+                <f:facet name="footer">
+                    <b:button value="Cancelar" dismiss="modal" onclick="$('.modal3').modal()"/>
+                    <b:button value="Aceptar" look="primary" dismiss="modal"/>
+                </f:facet>
+            </b:modal>   
+            
             <h:form id="formulario" class="form-horizontal" >
-                    <h:panelGrid columns="1" columnClasses="form-group">
-                        <p:inputText label="NUA" class="txtNUA" binding="#{visitController.mensaje}" 
-                                     value="#{visitController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>  
-                        <p:separator/>
+                <h:panelGrid columns="1" columnClasses="form-group">
+                    <p:inputText label="NUA" class="txtNUA" binding="#{visitController.mensaje}"
+                                 value="#{visitController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>
+                    <p:messages  for="txtNUA" showIcon="false" autoUpdate="true" closable="true" class="messages"/>
+                    
+                    <p:commandButton class="btn btn-primary btn-block btn-Ingress"  value="Ingresar" action ="#{visitController.mostrarDialogoIngreso()}" onclick="$('.modal1').modal()"/>
+                    <p:commandButton class="btn btn-primary btn-block btn-Exit" value="Salir" action ="#{visitController.mostrarDialogoSalida()}" onclick="$('.modal3').modal()"/>
+                </h:panelGrid>
 
-                        <p:messages  for="txtNUA" showIcon="false" autoUpdate="true" closable="true" />
-
-                        <p:commandButton class="btn btn-primary btn-block"  value="Ingresar" action ="#{visitController.mostrarDialogoIngreso()}"/>
-                        <p:commandButton class="btn btn-primary btn-block"  value="Salir"    action ="#{visitController.mostrarDialogoSalida()}"/>
-                    </h:panelGrid>
-
-                 <p:dialog header="Confirmaci&oacute;n" position="center" responsive="true" resizable="false"   class="formulario"
-                              widgetVar="entrar" dynamic="true" closable="true" modal="true" maximizable="false" minimizable="false"  >
+                <p:dialog header="Confirmaci&oacute;n" position="center" responsive="true" resizable="false"   class="formulario"
+                          widgetVar="entrar" dynamic="true" closable="true" modal="true" maximizable="false" minimizable="false"  >
                     <h:commandButton  value="Aceptar"  onclick="PF('entrar').hide();" action="#{visitController.logInAsStudent()}"
-                                     class="btn btn-primary btn-block" /> <br></br>
+                                      class="btn btn-primary btn-block" /> <br></br>
                     <h:commandButton  type="button" value="Cancelar" onclick="PF('entrar').hide();" class="btn btn-primary btn-block"/>
                 </p:dialog>
-                
+
                 <p:dialog header="infos" position="center" responsive="true" resizable="false" maximizable="false" minimizable="false"   class="formulario"
                           widgetVar="salir" dynamic="true" closable="true" modal="true" id="skillsModal" >
                     <h:commandButton binding="#{lsting}" value="Listening" class="btnListening"  onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(lsting.value)}"/>
