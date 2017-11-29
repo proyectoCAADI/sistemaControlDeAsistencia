@@ -31,9 +31,9 @@ INSERT INTO `CaadiIntegrada`.`Students` (`nua`, `firstLastName`, `secondLastName
 INSERT INTO `CaadiIntegrada`.`Students` (`nua`, `firstLastName`, `secondLastName`, `name`, `gender`, `birthday`, `program`, `email`) VALUES ('143424', 'ZENDEJAS', 'ANDRADE', 'LUIS ALEJANDRO', 'MALE', null, '', '');
 
 -- Teachers
-INSERT INTO `CaadiIntegrada`.`Students` (`employeeNumber`, `firstLastName`, `secondLastName`, `name`, `gender`, `email`) VALUES ('000001', 'LOPEZ', 'MIRANDA', 'JANETTE', 'FEMALE', '');
-INSERT INTO `CaadiIntegrada`.`Students` (`employeeNumber`, `firstLastName`, `secondLastName`, `name`, `gender`, `email`) VALUES ('000002', 'AP', 'AP', 'BLANCA', 'FEMALE', '');
-INSERT INTO `CaadiIntegrada`.`Students` (`employeeNumber`, `firstLastName`, `secondLastName`, `name`, `gender`, `email`) VALUES ('000003', 'REYES', 'AP', 'RODOLFO', 'MALE', '');
+INSERT INTO `CaadiIntegrada`.`Teachers` (`employeeNumber`, `firstLastName`, `secondLastName`, `name`, `gender`, `email`) VALUES ('000001', 'LOPEZ', 'MIRANDA', 'JANETTE', 'FEMALE', '');
+INSERT INTO `CaadiIntegrada`.`Teachers` (`employeeNumber`, `firstLastName`, `secondLastName`, `name`, `gender`, `email`) VALUES ('000002', 'AP', 'AP', 'BLANCA', 'FEMALE', '');
+INSERT INTO `CaadiIntegrada`.`Teachers` (`employeeNumber`, `firstLastName`, `secondLastName`, `name`, `gender`, `email`) VALUES ('000003', 'REYES', 'AP', 'RODOLFO', 'MALE', '');
 
 -- Grupos
 INSERT INTO `CaadiIntegrada`.`Groups` (`id`, `periodId`, `employeeNumber`, `learningUnit`, `level`, `identifier`) VALUES ('1', '1', '000001', 'learningUnit', '3', 'ident');

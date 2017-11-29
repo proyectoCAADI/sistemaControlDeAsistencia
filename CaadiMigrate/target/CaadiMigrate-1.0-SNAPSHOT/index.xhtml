@@ -4,12 +4,12 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+>      
 
     <h:body>
         <ui:composition template="Plantillas/Bases/PlantillaBase_TresPartes.xhtml">
             <ui:define name="content">           
-                <h:form id="formulario" class="form-horizontal" >
+                <h:form id="formulario" >
                     <h:panelGrid columns="1" columnClasses="form-group">
                         <p:inputText label="NUA" class="txtNUA" 
                                      value="#{visitController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>  
@@ -42,66 +42,6 @@
                 </h:form>
             </ui:define>
         </ui:composition>
-        <br />
-        <h:link outcome="/actor/List" value="Show All Actor Items"/>
-        <br />
-        <h:link outcome="/areaLibro/List" value="Show All AreaLibro Items"/>
-        <br />
-        <h:link outcome="/autor/List" value="Show All Autor Items"/>
-        <br />
-        <h:link outcome="/autorActividad/List" value="Show All AutorActividad Items"/>
-        <br />
-        <h:link outcome="/editorial/List" value="Show All Editorial Items"/>
-        <br />
-        <h:link outcome="/estatus/List" value="Show All Estatus Items"/>
-        <br />
-        <h:link outcome="/genero/List" value="Show All Genero Items"/>
-        <br />
-        <h:link outcome="/habilidad/List" value="Show All Habilidad Items"/>
-        <br />
-        <h:link outcome="/hojaTrabajo/List" value="Show All HojaTrabajo Items"/>
-        <br />
-        <h:link outcome="/idioma/List" value="Show All Idioma Items"/>
-        <br />
-        <h:link outcome="/juego/List" value="Show All Juego Items"/>
-        <br />
-        <h:link outcome="/libro/List" value="Show All Libro Items"/>
-        <br />
-        <h:link outcome="/materialApoyo/List" value="Show All MaterialApoyo Items"/>
-        <br />
-        <h:link outcome="/nivel/List" value="Show All Nivel Items"/>
-        <br />
-        <h:link outcome="/pelicula/List" value="Show All Pelicula Items"/>
-        <br />
-        <h:link outcome="/rating/List" value="Show All Rating Items"/>
-        <br />
-        <h:link outcome="/registroLibro/List" value="Show All RegistroLibro Items"/>
-        <br />
-        <h:link outcome="/revista/List" value="Show All Revista Items"/>
-        <br />
-        <h:link outcome="/subtitulo/List" value="Show All Subtitulo Items"/>
-        <br />
-        <h:link outcome="/tipoLibro/List" value="Show All TipoLibro Items"/>
     </h:body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>
 
