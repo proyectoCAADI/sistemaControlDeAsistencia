@@ -30,7 +30,7 @@ body{
     color: #7E7E7E;
     background-color: rgb(230, 230, 230);
     padding: 14px;
-    top: 42%;
+    top: 35%;
     left: 40%;
     width: 263px;
     border-radius: 5px !important;
@@ -43,29 +43,31 @@ body{
     color: black;
     background-color: white;
     border: 1px solid darkgray;
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 4px !important;
     height: 45px;
     width: 235px;
     text-align: center !important;
 }
 
-#errMessage1, #errMessage2{
-    display: none;
-    color: red;
-    position: relative;
-    margin: 8px 0px -15px 2px;
-    padding: 3px 0 3px 10px;
+.btnIngress{
+    margin-top: 30px;
+}
+
+.btnExit{
+    margin-top: 8px;
+}
+
+.txtMessage{
+    margin-bottom: -30px;
+}
+
+.btnModal12{
+    width: 90px;
 }
 
 .btn{
     height: 80%;
-}
-
-#boton{
-    font-size: 16px;
-    margin-top: 25px;
-    margin-bottom: 10px;
 }
 
 .begin{ align-content: center; }

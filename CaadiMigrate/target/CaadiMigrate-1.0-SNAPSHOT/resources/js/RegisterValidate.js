@@ -9,6 +9,11 @@ function openModal(){
     modal.style.display = "block";
 }
 
+function closeUserModal(){
+    var m1 = document.getElementById("m1");
+    m1.style.display = 'none';
+}
+
 function check(nua){
     if(( nua.value == 810243 )  && ( !flag1 )){
         openWelcomeModal();

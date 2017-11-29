@@ -4,21 +4,62 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     
     <h:body>
         <ui:composition template="Plantillas/Bases/PlantillaBase_TresPartes.xhtml">
-        <ui:define name="content">           
+        <ui:define name="content">
+            <b:modal id="m1" title="Bienvenido" styleClass="modal1" >
+                <p>¿Eres "Usuario" ?</p>
+                <f:facet name="footer">
+                    <b:button value="Aceptar" dismiss="modal" onclick="$('.modal2').modal()" class="btn btn-primary btnModal12"/>
+                    <b:button value="Cancelar" dismiss="modal" class="btn btn-default btnModal12"/>
+                </f:facet>
+            </b:modal>
+
+            <b:modal id="m2" title="Bienvenido a CAADI" styleClass="modal2">
+                <p>En tu visita a CADDI puedes usar diferente material para mejorar tu inglés. </p>
+                <p>Disfruta tu instancia en CAADI.</p>
+                <f:facet name="footer">
+                    <b:button value="Aceptar" dismiss="modal" class="btn btn-primary btnModal12"/>
+                </f:facet>
+            </b:modal>
+
+            <b:modal id="m3" title="¿Utilizaste algún libro?" styleClass="modal3" size="modal-sm" >
+                <p>Especifique si se utilizó material</p>
+                <f:facet name="footer">
+                    <b:button value="Aceptar" onclick="$('.modal4').modal()" class="btn btn-primary btnModal12" />
+                    <b:button value="No" dismiss="modal" class="btnModal12"/>
+                </f:facet>
+            </b:modal>
+
+            <b:modal id="m4" title="¿Que libro utilizaste?" styleClass="modal4">
+                <b:panelGrid colSpans="6,6" size="lg">
+                    <h:form>
+                        <b:inputText  placeholder="Código de barras" label="CodBar"/>
+                        <b:button look="success" value="Agregar" iconAwesome="fa-plus-circle" icon-align="right" class="btnModal12"/>
+                    </h:form>
+                    <b:panel>
+                        <h4>Lista de libros</h4>
+                    </b:panel>
+                </b:panelGrid>
+
+                <f:facet name="footer">
+                    <b:button value="Aceptar" look="primary" dismiss="modal"/>
+                    <b:button value="Cancelar" look="default" dismiss="modal"/>
+                </f:facet>
+            </b:modal>
+
             <h:form id="formulario" class="form-horizontal" >
                     <h:panelGrid columns="1" columnClasses="form-group">
                         <p:inputText label="NUA" class="txtNUA" binding="#{visitController.mensaje}" 
-                                     value="#{visitController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>  
-                        <p:separator/>
+                                     value="#{visitController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>
 
-                        <p:messages  for="txtNUA" showIcon="false" autoUpdate="true" closable="true" />
+                        <p:messages  class="txtMessage" for="txtNUA" showIcon="false" autoUpdate="true" closable="true" />
 
-                        <p:commandButton class="btn btn-primary btn-block"  value="Ingresar" action ="#{visitController.mostrarDialogoIngreso()}"/>
-                        <p:commandButton class="btn btn-primary btn-block"  value="Salir"    action ="#{visitController.mostrarDialogoSalida()}"/>
+                        <p:commandButton class="btn btn-primary btn-block btnIngress" onclick="$('.modal1').modal()" value="Ingresar" action ="#{visitController.mostrarDialogoIngreso()}"/>
+                        <p:commandButton class="btn btn-primary btn-block btnExit" onclick="$('.modal3').modal()"  value="Salir"    action ="#{visitController.mostrarDialogoSalida()}"/>
                     </h:panelGrid>
 
                  <p:dialog header="Confirmaci&oacute;n" position="center" responsive="true" resizable="false"   class="formulario"
@@ -34,7 +75,7 @@
                     <h:commandButton binding="#{reding}" value="Reading" class="btnReading" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(reding.value)}"/>
                     <h:commandButton binding="#{grming}" value="Grammar" class="btnGrammar" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(grming.value)}"/>
                     <h:commandButton binding="#{spking}" value="Speaking" class="btnSpeaking" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(spking.value)}"/> 
-                </p:dialog>              
+                </p:dialog>
             </h:form>
         </ui:define>
         </ui:composition>
