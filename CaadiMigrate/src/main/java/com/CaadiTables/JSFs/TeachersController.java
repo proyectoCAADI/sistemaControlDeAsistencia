@@ -4,8 +4,15 @@ import com.CaadiTables.Entities.Teachers;
 import com.CaadiTables.JSFs.util.JsfUtil;
 import com.CaadiTables.JSFs.util.PaginationHelper;
 import com.CaadiTables.Beans.TeachersFacade;
+import com.CaadiTables.Entities.Groups;
+import com.CaadiTables.Entities.Students;
+import com.CaadiTables.Entities.Visit;
+import com.CaadiTables.JSFs.util.Herramientas;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -24,14 +31,101 @@ public class TeachersController implements Serializable {
 
     private Teachers current;
     private DataModel items = null;
+    private List<SelectItem> maestros;
+    private List<SelectItem> grupos;
     @EJB
     private com.CaadiTables.Beans.TeachersFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private int idGrupoSeleccionado;
+ 
 
     public TeachersController() {
     }
 
+    public int getIdGrupoSeleccionado() {
+        return idGrupoSeleccionado;
+    }
+
+    public void setIdGrupoSeleccionado(int idGrupoSeleccionado) {
+        this.idGrupoSeleccionado = idGrupoSeleccionado;
+    }
+    
+    
+    // listar todos los grupos para un profesor
+    public List<SelectItem> getGrupos() {
+        
+        List<SelectItem> seleccionados = new ArrayList<SelectItem>();
+        
+        if(current.getEmployeeNumber()!=null){
+        
+        Teachers teacherActual = getFacade().find(current.getEmployeeNumber());
+        current = teacherActual;
+        
+        Object [] grupos =  teacherActual.getGroupsCollection().toArray();
+        
+        Integer i = new  Integer(1);
+        for( Object grupo : grupos ){
+            Groups gn = (Groups) grupo;
+            SelectItem tn = new SelectItem( i.toString() , gn.getLearningUnit() +" "+ gn.getLevel() );
+            seleccionados.add(tn); 
+            i +=  1;
+        }       
+        
+        return seleccionados;   
+        }
+        return seleccionados;
+    }
+    
+
+    
+    
+    public List<SelectItem> getmaestros() {
+        
+        // buscar todos los maestros 
+        List<Teachers>      listaMaestros = getFacade().findAll();
+        List<SelectItem>    listaSeleccns = new ArrayList<SelectItem>();
+        
+        for( Teachers teacher : listaMaestros ){          
+            SelectItem nuevoTeacher = new SelectItem(teacher.getEmployeeNumber(),teacher.getName());
+            listaSeleccns.add(nuevoTeacher);           
+        }
+        return listaSeleccns;
+    }
+    
+    
+    // listar los alumnos del grupo seleccionado
+    public List<Students> listarAlumnosXGrupo(){
+
+        List<Students> estList = new ArrayList<Students>();
+        
+        if (idGrupoSeleccionado > 0) {
+            Groups grupo = (Groups) current.getGroupsCollection().toArray()[idGrupoSeleccionado-1];
+            Object[] estdns = grupo.getStudentsCollection().toArray();
+
+            for (Object estudiante : estdns) {
+                Students NuevoEstudiante = (Students) estudiante;
+                estList.add(NuevoEstudiante);
+            }
+        }
+        
+        return estList;
+    }
+    
+    public void hola(){
+                
+        
+        String nua = "143424";
+        current.getEmployeeNumber();
+        List<Visit> visitas = Herramientas.getEm().createQuery
+        ("select e from Visit e where e.nua.nua = :nua",Visit.class).setParameter("nua", nua)
+                .getResultList();
+        visitas.size();
+    }
+    
+
+
+    
     public Teachers getSelected() {
         if (current == null) {
             current = new Teachers();

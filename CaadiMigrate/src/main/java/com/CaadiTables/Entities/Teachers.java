@@ -166,7 +166,9 @@ public class Teachers implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.Teachers[ employeeNumber=" + employeeNumber + " ]";
+        return  name +" "+firstLastName + " " +secondLastName ;
     }
+    
+   
     
 }
