@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLibroRegistroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLibroRegistroLabel_codBar}" for="codBar" />
+                    <h:inputText id="codBar" value="#{libroRegistroController.selected.codBar}" title="#{bundle.CreateLibroRegistroTitle_codBar}" required="true" requiredMessage="#{bundle.CreateLibroRegistroRequiredMessage_codBar}"/>
+                    <h:outputLabel value="#{bundle.CreateLibroRegistroLabel_nua}" for="nua" />
+                    <h:inputText id="nua" value="#{libroRegistroController.selected.nua}" title="#{bundle.CreateLibroRegistroTitle_nua}" required="true" requiredMessage="#{bundle.CreateLibroRegistroRequiredMessage_nua}"/>
+                    <h:outputLabel value="#{bundle.CreateLibroRegistroLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{libroRegistroController.selected.fecha}" title="#{bundle.CreateLibroRegistroTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{libroRegistroController.create}" value="#{bundle.CreateLibroRegistroSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{libroRegistroController.prepareList}" value="#{bundle.CreateLibroRegistroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateLibroRegistroIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
