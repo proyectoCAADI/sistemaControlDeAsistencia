@@ -5,7 +5,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      
+      >
     
     <h:body>
         <ui:composition template="Plantillas/Bases/PlantillaBase_TresPartes.xhtml">
@@ -100,8 +102,18 @@
                     <h:commandButton binding="#{reding}" value="Reading" class="btnReading" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(reding.value)}"/>
                     <h:commandButton binding="#{grming}" value="Grammar" class="btnGrammar" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(grming.value)}"/>
                     <h:commandButton binding="#{spking}" value="Speaking" class="btnSpeaking" onclick="PF('salir').hide();" action="#{visitController.logOutAsStudent(spking.value)}"/> 
-                </p:dialog>              
+                </p:dialog> 
+                
+                <h:panelGrid columns="1" cellpadding="5" >
+                    
+                </h:panelGrid>
+                <div align="center">
+                
+                </div>
             </h:form>
+
+ 
+
         </ui:define>
         </ui:composition>
     </h:body>

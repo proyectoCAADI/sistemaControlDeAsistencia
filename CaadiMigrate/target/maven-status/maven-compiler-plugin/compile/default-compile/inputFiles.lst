@@ -1,22 +1,23 @@
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/util/Herramientas.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/util/JsfUtil.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/VisitController.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/TeachersFacade.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/PerfilBase/PerfilBase.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/PagesObejects/PageObjectIndex.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/StudentsController.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/PeriodsFacade.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Entities/Groups.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/PeriodsController.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Entities/Periods.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Entities/Teachers.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Entities/Students.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/TeachersController.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Entities/Visit.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/VisitFacade.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/StudentsFacade.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/GroupsController.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/PagesObejects/PageObjectBase.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/util/PaginationHelper.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/GroupsFacade.java
-/home/walter/MEGAsync/DevProjects/Java/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/AbstractFacade.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Entities/Periods.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/StudentsController.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/StudentsFacade.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/GroupsFacade.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/TeachersFacade.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/util/Herramientas.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/PeriodsFacade.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/util/JsfUtil.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/GroupsController.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/org/primefaces/showcase/view/overlay/UserLoginView.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Entities/Teachers.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Entities/Students.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/PagesObejects/PageObjectIndex.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/PeriodsController.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Entities/Groups.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/VisitController.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/TeachersController.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/AbstractFacade.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/JSFs/util/PaginationHelper.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/PerfilBase/PerfilBase.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/PagesObejects/PageObjectBase.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Beans/VisitFacade.java
+/home/charly/Escritorio/proyecto dra/v1/sistemaControlDeAsistencia/CaadiMigrate/src/main/java/com/CaadiTables/Entities/Visit.java

@@ -1,7 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <header
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://xmlns.jcp.org/jsf/html">
+        xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      
+      >
 
     <div class="banner">
             <img src="./resources/images/escudo.png" alt="Escudo Universidad de Guanajuato"
@@ -10,8 +18,96 @@
 
     <div class="nav-bar">
         <ul class="nav navbar-fixed">
-            <li> <h:link class="logIn" value="Conectados" outcome="Conectados"/> </li>
+            <li>    <h:form> <p:commandButton value="Iniciar Sesion" type="button" onclick="PF('dlg').show();" />
+                    
+                </h:form>>
+            </li>
+            
+            
         </ul>
     </div>
+    <h:form>
+        <p:growl id="growl" sticky="false" showDetail="true" life="900" redisplay="false" />
+ 
+        <p:dialog header="Iniciar sesion" widgetVar="dlg" resizable="false" showEffect="Drop">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputLabel for="username" value="Usuario:" />
+                            <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
+
+                            <h:outputLabel for="password" value="Contraseña:" />
+                            <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
+
+                            
+                                <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login}"
+                                                 oncomplete="handleLoginRequest(xhr, status, args)" />
+                            
+                        </h:panelGrid>
+                    </p:dialog>
+        <p:dialog header="Login" widgetVar="holi" resizable="false" >
+                        <h:outputLabel  value="¡No hay usuarios conectados!" class="noUsersConected"
+                                   rendered="#{visitController.listarHashContent().size() eq 0}" />
+                    <h:dataTable value="#{visitController.listarHashContent()}" var="perfil" 
+                                 rendered="#{visitController.listarHashContent().size() > 0}"
+                                 class="table table-hover">
+                        
+                        <h:column>
+                            <f:facet name="header" >
+                                <h:outputLabel value="NUA"/>
+                            </f:facet>
+                            <h:outputLabel value="#{perfil.infoEst.nua}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">  
+                                <h:outputLabel value="Nombre"/>
+                            </f:facet> 
+                            <h:outputLabel value="#{perfil.infoEst.name}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">  
+                                <h:outputLabel value="Hora de inicio"/>
+                            </f:facet> 
+                            <h:outputLabel value="#{perfil.infoVst.start}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">  
+                                <h:outputLabel value="Tiempo total"/>
+                            </f:facet> 
+                            <h:outputLabel value="#{visitController.calcularDeltaFechas( perfil.infoVst.start )}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Opciones"/>
+                            </f:facet> 
+                            <h:commandButton value="Desconectar" class="btn btn-danger"/>
+                            <h:commandButton value="Revisar" class="btn btn-info"/>
+                        </h:column>
+                    
+                    </h:dataTable>
+                    </p:dialog>
+
+    </h:form>
+    
+<script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            
+            window.open("http://localhost:8080/CaadiMigrate/faces/Conectados.xhtml","_self")
+            $('#loginLink').fadeOut();
+        }
+    }
+</script>
+         
+ 
+ 
+    
+    
     
 </header>
