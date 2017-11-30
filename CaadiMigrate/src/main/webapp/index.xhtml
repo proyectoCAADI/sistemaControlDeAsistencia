@@ -38,26 +38,23 @@
                
                 <b:panelGrid colSpans="3,9" size="lg">
                     <h:form>
-                    <b:inputText id ="libro" placeholder="Ingresa el código de barras"/>
-                    <b:button look="success" value="Agregar" icon="plus" icon-align="left" large-screen="full-width"/>
+                        
+                        <b:inputText value="" id ="libro" placeholder="Ingresa el código de barras"/>
+                        <b:commandButton look="success" value="Agregar" icon="plus" icon-align="left" large-screen="full-width" action="#{bean.agregar}" />
                     </h:form>
                     <b:panel>
                         
                     <h4>Lista de libros</h4>
                     <h:form>    
-                        <b:dataTable value="tabla" var="item" searching="false" lang="es" paginated="false">
+                        <b:dataTable value="#{bean.lista}" var="item" searching="false" lang="es" paginated="false">
                             <f:facet name="header">
                                 <tr>
-                                   <th>CodBar</th>
-                                   <th>Título de libro</th>
-                                   <th>Nivel</th>
+                                   <th>CodBar</th>                        
                                    <th>Opciones</th>
                                </tr>
                             </f:facet>
 
-                            <b:dataTableColumn value="1" />
-                            <b:dataTableColumn value="2" />
-                            <b:dataTableColumn value="3" />
+                            <b:dataTableColumn value="#{item.codbar}" />
                             
                             <b:dataTableColumn>
                                 <b:commandButton  look="info" value="Editar" icon="edit" ajax="true" update="@(.tabla)" 
