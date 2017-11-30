@@ -1,4 +1,5 @@
-com/PageTests/ejemplos.class
-com/PageTests/SeleniumTestVisitView.class
-com/PageTests/SeleniumTestIndex.class
-com/PageTests/ejemplos$1.class
+com\PageTests\SeleniumTestVisitView.class
+com\PageTests\ejemplos.class
+PruebaInicioSesionIT.class
+com\PageTests\SeleniumTestIndex.class
+com\PageTests\ejemplos$1.class
