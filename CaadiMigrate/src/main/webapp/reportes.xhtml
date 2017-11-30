@@ -14,22 +14,27 @@
             <ui:define name="content">
                 <h:form class="formulario">
 
+                    <p:outputLabel value="Nombre del Profesor"/>
                     <p:selectOneMenu value="#{teachersController.selected.employeeNumber}">
                         <f:selectItem itemLabel="Seleccione Profesor"/>
                         <f:selectItems value="#{teachersController.maestros}"/>
-                        <p:ajax event="change" 
-                                update="selectGrupos"
-                        />
+                        <p:ajax event="change" update="selectGrupos"/>
                     </p:selectOneMenu>
 
+                    <p:outputLabel value="Grupo"/>
+                    <br/>
+                    
+                    
                     <p:selectOneMenu id="selectGrupos" value="#{teachersController.idGrupoSeleccionado}">
                         <f:selectItem itemLabel="Seleccione Grupo"/>
                         <f:selectItems value="#{teachersController.grupos}"/>
-                        <p:ajax event="change" 
-                                
-                                update="estsGrupo"
-                        />                                
+                        <p:ajax event="change"  update="estsGrupo"/>                                
                     </p:selectOneMenu>
+                    
+                    <p:separator/>
+                    
+                    <h:commandButton  value="Listar Alumnos" />
+                    <h:commandButton  value="Crear Pdf" action="#{teachersController.crearPdf()}"/>
                     
                     <h:outputLabel value="No hay Estudiantes en el grupo" 
                                    rendered="#{teachersController.listarAlumnosXGrupo().size() eq 0}"
@@ -65,9 +70,9 @@
                         
                          <h:column>
                             <f:facet name="header" >
-                                <h:outputLabel value="Horas"/>
+                                <h:outputLabel value="Tiempo"/>
                             </f:facet>
-                            <h:outputLabel value="#{estudiante.firstLastName} #{estudiante.secondLastName}"/>
+                             <h:outputLabel value="#{teachersController.sumarHoras(estudiante.nua)}"/>
                         </h:column>
                     
                     </h:dataTable>

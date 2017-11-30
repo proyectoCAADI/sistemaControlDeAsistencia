@@ -8,9 +8,22 @@ import com.CaadiTables.Entities.Groups;
 import com.CaadiTables.Entities.Students;
 import com.CaadiTables.Entities.Visit;
 import com.CaadiTables.JSFs.util.Herramientas;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -18,12 +31,15 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 
 @Named("teachersController")
 @SessionScoped
@@ -38,6 +54,7 @@ public class TeachersController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private int idGrupoSeleccionado;
+    private List<Students> ListaEstudiantesXGrupo;
  
 
     public TeachersController() {
@@ -87,12 +104,48 @@ public class TeachersController implements Serializable {
         List<SelectItem>    listaSeleccns = new ArrayList<SelectItem>();
         
         for( Teachers teacher : listaMaestros ){          
-            SelectItem nuevoTeacher = new SelectItem(teacher.getEmployeeNumber(),teacher.getName());
+            SelectItem nuevoTeacher = new SelectItem(teacher.getEmployeeNumber(),teacher.getName()
+                    +" "+ teacher.getFirstLastName() +" "+ teacher.getSecondLastName());
             listaSeleccns.add(nuevoTeacher);           
         }
         return listaSeleccns;
     }
     
+    public String sumarHoras(String nua) {
+
+        // conseguir todas las visitas para el nua indicado
+        List<Visit> visitas = Herramientas.getEm().createQuery("select e from Visit e where e.nua.nua = :nua", Visit.class).setParameter("nua", nua)
+                .getResultList();
+        
+        long TotalHoras = 0, TotalMinutos = 0, TotalSegundos = 0;
+        
+        for( Visit visita : visitas ){
+            Calendar CalendarioInicio = Calendar.getInstance(); 
+            Calendar CalendarioFinal  = Calendar.getInstance(); 
+            
+            CalendarioInicio.setTime( visita.getStart() );
+            CalendarioFinal.setTime(  visita.getEnd()   );
+            
+            long milSegundosInicio = 0, milSegundosFinal = 0, deltaHoras = 0,
+                 segundos = 0, minutos = 0, horas = 0;
+            
+            milSegundosInicio = CalendarioInicio.getTimeInMillis();
+            milSegundosFinal  = CalendarioFinal.getTimeInMillis();
+            
+            deltaHoras = milSegundosFinal - milSegundosInicio;
+            
+            segundos = Math.abs( deltaHoras / 1000 );
+            minutos = Math.abs( deltaHoras / (60 * 1000) );
+            horas = Math.abs( deltaHoras / (60*60 * 1000) );
+            
+            TotalHoras += horas;
+            TotalMinutos += minutos;
+            TotalSegundos += segundos;
+        }
+        
+        return String.valueOf( TotalHoras + ":" + TotalMinutos + ":" + TotalSegundos);
+
+    }
     
     // listar los alumnos del grupo seleccionado
     public List<Students> listarAlumnosXGrupo(){
@@ -108,11 +161,83 @@ public class TeachersController implements Serializable {
                 estList.add(NuevoEstudiante);
             }
         }
-        
+        this.ListaEstudiantesXGrupo = estList;
         return estList;
     }
     
-    public void hola(){
+    
+    public void crearPdf() throws FileNotFoundException, DocumentException, IOException{
+        
+        String NombreArchivo = current.getName()+".pdf";
+        
+        Groups grupoActual = (Groups)current.getGroupsCollection().toArray()[idGrupoSeleccionado-1];
+        
+        Document  documentoReporte = new Document();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PdfWriter.getInstance(documentoReporte, baos);
+        documentoReporte.open();
+        
+        // agregar datos fuera de la tabla 
+        Paragraph linea1 = new Paragraph("Nombre del profesor: "+ " "+ current.getName() 
+                + " "+ current.getFirstLastName() +" "+ current.getSecondLastName());
+        
+        // nivel del curso
+        Paragraph linea2 = new Paragraph("Nombre del curso :"+ " "+ grupoActual.getLearningUnit() +" "+
+                grupoActual.getLevel()  );
+        
+        Paragraph linea3 = new Paragraph(" Alumnos: "  );
+        
+        //agregar lineas al documento
+        documentoReporte.add(linea1);
+        documentoReporte.add(linea2);
+        documentoReporte.add(linea3);
+        documentoReporte.add( new Paragraph(" "));
+        
+        documentoReporte.add( crearTablaReporte() );
+        documentoReporte.close();
+        
+        ExternalContext response = FacesContext.
+                getCurrentInstance().getExternalContext();
+        
+        response.responseReset();
+        response.setResponseContentType("application/pdf");
+        response.setResponseContentLength(baos.size());
+        response.setResponseHeader("Content-Disposition","attachment; filename ="+NombreArchivo);
+        
+        OutputStream output = response.getResponseOutputStream();
+        baos.writeTo(output);
+        output.flush();
+        output.close();
+  
+        FacesContext.getCurrentInstance().responseComplete();
+        
+    }
+    
+    public PdfPTable crearTablaReporte (){
+        
+        // crear table de 3 columnas 
+        PdfPTable table = new PdfPTable(3);
+        
+        //agregar celdas de titulo
+        table.addCell("NUA");
+        table.addCell("Nombre(s) y Apellidos");
+        table.addCell("Horas Acumuladas");
+        
+        
+        // recorrer la lista de studiantes 
+        for( Students est : this.ListaEstudiantesXGrupo ){
+            
+            // agregar informacion a las celdas
+            table.addCell( est.getNua() );
+            table.addCell( est.getName() +" "+  est.getFirstLastName() +" "+ 
+                    est.getSecondLastName());
+            table.addCell( sumarHoras(est.getNua()) );
+        }
+        
+        return table; 
+    }
+    
+    public void GenerarPdf(){
                 
         
         String nua = "143424";
