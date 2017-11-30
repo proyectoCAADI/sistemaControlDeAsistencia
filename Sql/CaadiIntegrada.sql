@@ -5,13 +5,6 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema CaadiIntegrada
--- -----------------------------------------------------
-
--- -----------------------------------------------------
 -- Schema CaadiIntegrada
 -- -----------------------------------------------------
 drop  schema if exists `CaadiIntegrada`;
@@ -140,68 +133,54 @@ CREATE TABLE IF NOT EXISTS `CaadiIntegrada`.`Visit` (
 ENGINE = InnoDB
 AUTO_INCREMENT = 25
 DEFAULT CHARACTER SET = utf8;
--- -------------------------
+
+-- -------------------------------------------
 -- Union de la base de datos - Inventario
--- -------------------------
-create table estatus
-(
+-- -------------------------------------------
+create table estatus(
 	id_estatus int auto_increment not null,
     estatus varchar(20) not null,
     primary key(id_estatus)
 );
 
-
-
-create table habilidad
-(
+create table habilidad(
 	id_habilidad int auto_increment not null,
     nombre_habilidad varchar(20) not null,
     primary key(id_habilidad)
 );
 
-create table material_apoyo
-(
+create table material_apoyo(
 	id_material int auto_increment not null,
     nombre_material varchar(100) not null,
     primary key(id_material)
 );
 
-create table nivel
-(
+create table nivel(
 	id_nivel int auto_increment not null,
     nivel varchar(50) not null,
     primary key(id_nivel)
 );
 
-create table autor_actividad
-(
+create table autor_actividad(
 	id_autor int auto_increment not null,
 	nua int(6) not null,
     primary key(id_autor)
 );
 
-insert into autor_actividad(nua) values(909090);
-insert into autor_actividad(nua) values(909490);
-insert into autor_actividad(nua) values(923090);
-
-create table idioma
-(
+create table idioma(
 	id_idioma int auto_increment not null,
     idioma varchar(20) not null,
     primary key(id_idioma)
 );
 
 
-
-create table rating
-(
+create table rating(
 	id_rating int auto_increment not null,
     rating int(1) not null,
     primary key(id_rating)
 );
 
-create table hoja_trabajo
-(
+create table hoja_trabajo(
 	id_hoja int auto_increment,
     duracion_hoja int not null,
     nombre_hoja varchar(100) not null,
@@ -223,8 +202,7 @@ create table hoja_trabajo
     foreign key(id_rating) references rating(id_rating)
 );
 
-create table juego
-(
+create table juego(
 	id_juego int auto_increment not null,
     nombre_juego varchar(100) not null,
     instruccion varchar(100) not null,
@@ -246,36 +224,26 @@ create table juego
     foreign key(id_rating) references rating(id_rating)
 );
 
-create table subtitulo
-(
+create table subtitulo(
 	id_subtitulo int auto_increment not null,
     idioma_subtitulo varchar(20) not null,
     primary key(id_subtitulo)
 );
-insert into subtitulo(idioma_subtitulo) values("English");
-insert into subtitulo(idioma_subtitulo) values("French");
-insert into subtitulo(idioma_subtitulo) values("German");
 
-create table actor
-(
+create table actor(
 	id_actor int auto_increment not null,
     nombre_actor varchar(20) not null,
     apellido_actor varchar(20) not null,
     primary key(id_actor)
 );
-insert into actor(nombre_actor,apellido_actor) values("nico","chavez");	
-create table genero
-(
+
+create table genero(
 	id_genero int auto_increment not null,
     genero varchar(20) not null,
     primary key(id_genero)
 );
-insert into genero(genero) values("Horror");
-insert into genero(genero) values("Scify");
 
-
-create table pelicula
-(
+create table pelicula(
 	id_pelicula int auto_increment ,
     titulo_pelicula varchar(100) not null,
     duracion_pelicula int(3) not null,
@@ -294,16 +262,14 @@ create table pelicula
     foreign key(id_genero) references genero(id_genero)
 );
 
-create table editorial
-(
+create table editorial(
 	id_editorial int auto_increment not null,
     nombre_editorial varchar(100) not null,
     direccion varchar(100),
     primary key(id_editorial)
 );
 
-create table revista
-(
+create table revista(
 	id_revista int auto_increment not null,
     titulo_revista varchar(100) not null,
     nombre_revista varchar(100) not null,
@@ -315,15 +281,6 @@ create table revista
     foreign key(id_rating) references rating(id_rating),
     foreign key(id_editorial) references editorial(id_editorial)
 );
-alter table revista modify column nombre_revista varchar(101) not null;
-
-create table autor_libro
-(
-	id_libro int not null,
-    id_autor int not null,
-    foreign key(id_libro)references libro(id_libro),
-    foreign key (id_autor) references autor(id_autor)
-);
 
 create table autor(
 	id_autor int auto_increment primary key,
@@ -332,28 +289,22 @@ create table autor(
 
 );
 
-
 create table tipo_libro(
 	id_tipo_libro int auto_increment primary key,
     tipo_libro varchar(100) not null
 );
-
-
-
 
 create table area_libro(
 	id_area_libro int auto_increment primary key,
     area_libro varchar(100) not null
 );
 
-
-create table libro
-(
-	id_libro  int auto_increment,
+create table libro(
+	id_libro int auto_increment,
     cod_bar bigint(13),
     cantidad int not null,
     id_area_libro int not null,
-    año_publicacion varchar(20),
+    año_publicacion varchar(10),
     titulo_libro varchar(100),
     id_tipo_libro int not null,
     audio_libro boolean,
@@ -372,15 +323,18 @@ create table libro
     foreign key(id_editorial) references editorial(id_editorial)
 );
 
-create table entidad(
-id_entidad int auto_increment primary key,
-entidad varchar(200) not null
+create table autor_libro(
+    id_relacion int not null auto_increment primary key, 
+	id_libro int not null,
+    id_autor int not null,
+    foreign key(id_libro)references libro(id_libro),
+    foreign key (id_autor) references autor(id_autor)
 );
-insert into entidad values(1,"Pelicula");
-insert into entidad values(2,"Libro");
-insert into entidad values(3,"Revista");
-insert into entidad values(4,"Juego");
-insert into entidad values(5,"Hoja");
+
+create table entidad(
+    id_entidad int auto_increment primary key,
+    entidad varchar(200) not null
+);
 
 create table registro_material(
 	id_registro int auto_increment primary key,
@@ -393,11 +347,12 @@ create table registro_material(
 
 create table registro_libro(
 	id_registro int auto_increment primary key,
-    cod_bar bigint(20) not null,
+    id_libro int not null,
     id_visita int(11) not null,
     foreign key(id_visita) references `CaadiIntegrada`.`Visit`(`id`),
-    foreign key(cod_bar) references libro(id_libro)
+    foreign key(id_libro) references libro(id_libro)
 );
+
 create table registro_revista(
 	id_registro int auto_increment primary key,
     id_revista int(20) not null,
@@ -406,7 +361,6 @@ create table registro_revista(
     foreign key(id_revista) references revista(id_revista)
 );
 
-
 create table registro_juego(
 	id_registro int auto_increment primary key,
     id_juego int(20) not null,
@@ -414,6 +368,7 @@ create table registro_juego(
     foreign key(id_visita) references `CaadiIntegrada`.`Visit`(`id`),
     foreign key(id_juego) references juego(id_juego)
 );
+
 create table registro_pelicula(
 	id_registro int auto_increment primary key,
     id_pelicula int(20) not null,
@@ -423,7 +378,8 @@ create table registro_pelicula(
 );
 
 
-# modificaciones nico
+# MODIFICACIONES DE PRUEBA
+alter table revista modify column nombre_revista varchar(101) not null;
 
 alter table autor_actividad auto_increment=100;
 alter table material_apoyo auto_increment=1;
@@ -434,46 +390,33 @@ alter table idioma auto_increment=1;
 alter table rating auto_increment=1;
 alter table nivel auto_increment=1;
 
-insert into habilidad(nombre_habilidad) values('speaking');
-insert into habilidad(nombre_habilidad) values('writing');
-insert into habilidad(nombre_habilidad) values('listening');
-
-insert into idioma(idioma) values('ingles');
-insert into idioma(idioma) values('frances');
-insert into idioma(idioma) values('italiano');
-
-insert into estatus(estatus) values('requesting');
-insert into estatus(estatus) values('accepted');
-insert into estatus(estatus) values('rejected');
-
-insert into material_apoyo(nombre_material) values('no material');
+insert into material_apoyo(nombre_material) values('no hay material');
 insert into material_apoyo(nombre_material) values('cd');
 insert into material_apoyo(nombre_material) values('dvd');
 
-insert into rating(rating) values(0);
-insert into rating(rating) values(1);
-insert into rating(rating) values(2);
-insert into rating(rating) values(3);
-insert into rating(rating) values(4);
-insert into rating(rating) values(5);
+insert into actor(nombre_actor,apellido_actor) values("nico","chavez");
 
-insert into nivel(nivel) values('1');
-insert into nivel(nivel) values('2');
-insert into nivel(nivel) values('3');
-insert into nivel(nivel) values('4');
-insert into nivel(nivel) values('5');
-insert into nivel(nivel) values('6');
-insert into nivel(nivel) values('7');
-insert into nivel(nivel) values('8');
+insert into subtitulo(idioma_subtitulo) values("English");
+insert into subtitulo(idioma_subtitulo) values("French");
+insert into subtitulo(idioma_subtitulo) values("German");
 
-insert into autor_actividad(nua) values('810320');
-insert into autor_actividad(nua) values('810228');
-insert into autor_actividad(nua) values('810621');
+insert into autor_actividad(nua) values(909090);
+insert into autor_actividad(nua) values(909490);
+insert into autor_actividad(nua) values(923090);
 
+insert into genero(genero) values("Horror");
+insert into genero(genero) values("Scify");
 
--- Fin de la union inventario
+insert into entidad values(1,"Pelicula");
+insert into entidad values(2,"Libro");
+insert into entidad values(3,"Revista");
+insert into entidad values(4,"Juego");
+insert into entidad values(5,"Hoja");
 
 
+-- -------------------------------------------
+-- Fin de la union - Inventario
+-- -------------------------------------------
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
