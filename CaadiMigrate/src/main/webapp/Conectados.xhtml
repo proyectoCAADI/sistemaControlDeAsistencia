@@ -30,10 +30,6 @@
                             <f:facet name="header">  
                                 <h:outputLabel value="Nombre"/>
                             </f:facet> 
-                          
-                            <h:outputLabel value=" Nombre: #{perfil.infoEst.name}"/>
-                            <h:outputLabel value=" Inicio: #{perfil.infoVst.start}"/>
-                            <h:outputLabel value=" Material En uso"/>
                             <h:outputLabel value="#{perfil.infoEst.name}"/>
                         </h:column>
 
@@ -57,8 +53,8 @@
                                 <h:outputLabel value="Opciones"/>
                             </f:facet> 
 
-                            <h:commandButton value="Desconectar" class="btn-danger" action="#{visitController.eliminarConectado( perfil.infoEst.nua )}" />
-                            <h:commandButton value="Revisar" class="btn-info"/>
+                            <h:commandButton value="Desconectar" class="btn btn-danger" action="#{visitController.eliminarConectado( perfil.infoEst.nua )}" />
+                            <h:commandButton value="Revisar" class="btn btn-info"/>
 
                         </h:column>
                     
