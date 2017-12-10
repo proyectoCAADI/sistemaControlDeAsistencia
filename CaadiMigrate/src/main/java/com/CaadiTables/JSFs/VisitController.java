@@ -65,7 +65,7 @@ public class VisitController implements Serializable {
 
     public void mostrarDialogoIngreso(){
         if( current.getNua() != null )
-            RequestContext.getCurrentInstance().execute("PF('entrar').show();");
+            RequestContext.getCurrentInstance().execute("openWelcomeModal();");
         else         
         {
             FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "NUA Incorrecto o Vacio", null));   
@@ -75,7 +75,7 @@ public class VisitController implements Serializable {
     
     public void mostrarDialogoSalida(){
         if( current.getNua() != null && Herramientas.containsKeyInHash( current.getNua().getNua()) == true )
-            RequestContext.getCurrentInstance().execute("PF('salir').show();");           
+            RequestContext.getCurrentInstance().execute("openVerifyBook()");           
         else       
         {
             FacesContext.getCurrentInstance().addMessage("txtNUA", new FacesMessage( FacesMessage.SEVERITY_ERROR, "NUA Incorrecto o Vacio", null));
