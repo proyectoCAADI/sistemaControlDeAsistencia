@@ -22,18 +22,18 @@
 
                         <tr>
                             <td>
-                                <p:selectOneMenu value="#{teachersController.selected.employeeNumber}">
+                                <h:selectOneMenu value="#{teachersController.selected.employeeNumber}">
                                     <f:selectItem itemLabel="Seleccione Profesor"/>
-                                    <f:selectItems value="#{teachersController.maestros}"/>
+                                    <f:selectItems value="#{teachersController.conseguirMaestros()}"/>
                                     <p:ajax event="change" update="selectGrupos"/>
-                                </p:selectOneMenu>
+                                </h:selectOneMenu>
                             </td>
                             <td>
-                                <p:selectOneMenu id="selectGrupos" class="dropdown" value="#{teachersController.idGrupoSeleccionado}">
+                                <h:selectOneMenu id="selectGrupos" class="dropdown" value="#{teachersController.idGrupoSeleccionado}">
                                     <f:selectItem itemLabel="Seleccione Grupo"/>
-                                    <f:selectItems value="#{teachersController.grupos}"/>
-                                    <p:ajax event="change"  update="estsGrupo"/>                                
-                                </p:selectOneMenu>                                
+                                    <f:selectItems value="#{teachersController.conseguirGrupos()}"/>
+                                    <p:ajax event="change"  update="estsGrupo"/>                        
+                                </h:selectOneMenu>                                
                             </td>
                             <td>
                                 <h:commandButton  value="Listar alumnos" class="btn btn-default" />

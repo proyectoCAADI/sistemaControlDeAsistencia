@@ -70,34 +70,33 @@ public class TeachersController implements Serializable {
     
     
     // listar todos los grupos para un profesor
-    public List<SelectItem> getGrupos() {
+    public List<SelectItem> conseguirGrupos() {
         
         List<SelectItem> seleccionados = new ArrayList<SelectItem>();
-        
-        if(current.getEmployeeNumber()!=null){
-        
-        Teachers teacherActual = getFacade().find(current.getEmployeeNumber());
-        current = teacherActual;
-        
-        Object [] grupos =  teacherActual.getGroupsCollection().toArray();
-        
-        Integer i = new  Integer(1);
-        for( Object grupo : grupos ){
-            Groups gn = (Groups) grupo;
-            SelectItem tn = new SelectItem( i.toString() , gn.getLearningUnit() +" "+ gn.getLevel() );
-            seleccionados.add(tn); 
-            i +=  1;
-        }       
-        
-        return seleccionados;   
+
+        if (current.getEmployeeNumber() != null) {
+
+            Teachers teacherActual = getFacade().find(current.getEmployeeNumber());
+            current = teacherActual;
+
+            Object[] grupos = teacherActual.getGroupsCollection().toArray();
+
+            Integer i = new Integer(1);
+            for (Object grupo : grupos) {
+                Groups gn = (Groups) grupo;
+                SelectItem tn = new SelectItem(i.toString(), gn.getLearningUnit() + " " + gn.getLevel());
+                seleccionados.add(tn);
+                i += 1;
+            }
         }
+        this.grupos = seleccionados;
         return seleccionados;
     }
     
 
     
     
-    public List<SelectItem> getmaestros() {
+    public List<SelectItem> conseguirMaestros() {
         
         // buscar todos los maestros 
         List<Teachers>      listaMaestros = getFacade().findAll();
@@ -108,6 +107,7 @@ public class TeachersController implements Serializable {
                     +" "+ teacher.getFirstLastName() +" "+ teacher.getSecondLastName());
             listaSeleccns.add(nuevoTeacher);           
         }
+        this.maestros = listaSeleccns;
         return listaSeleccns;
     }
     
