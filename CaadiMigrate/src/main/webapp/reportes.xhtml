@@ -10,33 +10,42 @@
 
     <body>
 
-        <ui:composition template="./Plantillas/Bases/PlantillaBase_TresPartes.xhtml">
+        <ui:composition template="./Plantillas/Bases/PlantillaBaseAdministrador.xhtml">
             <ui:define name="content">
-                <h:form class="formConected">
+                <h:form class="formReport">
+                    <table class="table">
+                        <tr>
+                            <td> Nombre del profesor </td>
+                            <td> Grupo </td>
+                            <td> Opciones </td>
+                        </tr>
 
-                    <p:outputLabel value="Nombre del Profesor"/>
-                    <p:selectOneMenu value="#{teachersController.selected.employeeNumber}">
-                        <f:selectItem itemLabel="Seleccione Profesor"/>
-                        <f:selectItems value="#{teachersController.maestros}"/>
-                        <p:ajax event="change" update="selectGrupos"/>
-                    </p:selectOneMenu>
-
-                    <p:outputLabel value="Grupo"/>
-                    <br/>
-                    
-                    
-                    <p:selectOneMenu id="selectGrupos" value="#{teachersController.idGrupoSeleccionado}">
-                        <f:selectItem itemLabel="Seleccione Grupo"/>
-                        <f:selectItems value="#{teachersController.grupos}"/>
-                        <p:ajax event="change"  update="estsGrupo"/>                                
-                    </p:selectOneMenu>
+                        <tr>
+                            <td>
+                                <p:selectOneMenu value="#{teachersController.selected.employeeNumber}">
+                                    <f:selectItem itemLabel="Seleccione Profesor"/>
+                                    <f:selectItems value="#{teachersController.maestros}"/>
+                                    <p:ajax event="change" update="selectGrupos"/>
+                                </p:selectOneMenu>
+                            </td>
+                            <td>
+                                <p:selectOneMenu id="selectGrupos" class="dropdown" value="#{teachersController.idGrupoSeleccionado}">
+                                    <f:selectItem itemLabel="Seleccione Grupo"/>
+                                    <f:selectItems value="#{teachersController.grupos}"/>
+                                    <p:ajax event="change"  update="estsGrupo"/>                                
+                                </p:selectOneMenu>                                
+                            </td>
+                            <td>
+                                <h:commandButton  value="Listar alumnos" class="btn btn-default" />
+                                <h:commandButton  value="Crear PDF" class="btn btn-primary" action="#{teachersController.crearPdf()}"/>
+                            </td>
+                        </tr>
+                    </table>
                     
                     <p:separator/>
                     
-                    <h:commandButton  value="Listar Alumnos" />
-                    <h:commandButton  value="Crear Pdf" action="#{teachersController.crearPdf()}"/>
-                    
-                    <h:outputLabel value="No hay Estudiantes en el grupo" 
+                    <br></br>
+                    <h:outputLabel value="No hay Estudiantes en el grupo" class="noStudents"
                                    rendered="#{teachersController.listarAlumnosXGrupo().size() eq 0}"
                     />
                     
@@ -49,28 +58,28 @@
                         
                          <h:column>
                             <f:facet name="header" >
-                                <h:outputLabel value="NUA"/>
+                                <h:outputLabel value="NUA" class="centerNUAColumn"/>
                             </f:facet>
                              <h:outputLabel value="#{estudiante.nua}"/>
                          </h:column>
                         
                         <h:column>
                             <f:facet name="header" >
-                                <h:outputLabel value="Nombre"/>
+                                <h:outputLabel value="Nombre" class="centerNameColumn"/>
                             </f:facet>
                             <h:outputLabel value="#{estudiante.name}"/>
                         </h:column>
                         
                         <h:column>
                             <f:facet name="header" >
-                                <h:outputLabel value="Apellidos"/>
+                                <h:outputLabel value="Apellidos" class="centerNameColumn"/>
                             </f:facet>
                             <h:outputLabel value="#{estudiante.firstLastName} #{estudiante.secondLastName}"/>
                         </h:column>
                         
                          <h:column>
                             <f:facet name="header" >
-                                <h:outputLabel value="Tiempo"/>
+                                <h:outputLabel value="Tiempo" class="centerHourColumn"/>
                             </f:facet>
                              <h:outputLabel value="#{teachersController.sumarHoras(estudiante.nua)}"/>
                         </h:column>

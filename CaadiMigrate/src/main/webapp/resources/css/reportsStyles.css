@@ -1,10 +1,9 @@
+/* 
+    Created on : 10-dic-2017, 9:15:02
+    Author     : walter
+*/
 
-.noUsersConected{
-    font-size: 26px;
-    text-align: center;
-}
-
-#formConected{
+.formReport{
     position: relative;
     font-family: Ghandi;
     color: #7E7E7E;
@@ -18,13 +17,7 @@
     box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2), 0 2px 20px 0 rgba(0,0,0,0.1);
 }
 
-.btn-danger{
-    margin-right: 10px;
+.btn-default{
+    margin-right: 12px;
 }
-
-.centerNUAColumn{padding-left: 30%;}
-.centerNameColumn{padding-left: 43%;}
-.centerHourColumn{padding-left: 20%;}
-.centerDeltaColumn{padding-left: 25%;}
-.centerOptionsColumn{padding-left: 40%;}
 

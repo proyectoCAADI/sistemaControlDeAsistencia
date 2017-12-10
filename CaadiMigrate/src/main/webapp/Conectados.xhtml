@@ -16,33 +16,32 @@
                                    rendered="#{visitController.listarHashContent().size() eq 0}" />
                     <h:dataTable value="#{visitController.listarHashContent()}" var="perfil" 
                                  rendered="#{visitController.listarHashContent().size() > 0}"
-
                                  class="table table-hover">
                         
                         <h:column>
-                            <f:facet name="header" >
-                                <h:outputLabel value="NUA"/>
+                            <f:facet name="header">
+                                <h:outputLabel value="NUA" class="centerNUAColumn"/>
                             </f:facet>
                             <h:outputLabel value="#{perfil.infoEst.nua}"/>
                         </h:column>
                         
                         <h:column>
-                            <f:facet name="header">  
-                                <h:outputLabel value="Nombre"/>
+                            <f:facet name="header">
+                                <h:outputLabel value="Nombre" class="centerNameColumn"/>
                             </f:facet> 
-                            <h:outputLabel value="#{perfil.infoEst.name}"/>
+                            <h:outputLabel value="#{perfil.infoEst.name} #{perfil.infoEst.firstLastName} #{perfil.infoEst.secondLastName}"/>
                         </h:column>
 
                         <h:column>
                             <f:facet name="header">  
-                                <h:outputLabel value="Hora de inicio"/>
+                                <h:outputLabel value="Hora de inicio" class="centerHourColumn"/>
                             </f:facet> 
-                            <h:outputLabel value="#{perfil.infoVst.start}"/>
+                            <h:outputLabel value="#{perfil.infoVst.start.hours}:#{perfil.infoVst.start.minutes}:#{perfil.infoVst.start.seconds}"/>
                         </h:column>
 
                         <h:column>
                             <f:facet name="header">  
-                                <h:outputLabel value="Tiempo total"/>
+                                <h:outputLabel value="Tiempo total" class="centerDeltaColumn"/>
                             </f:facet> 
                             <h:outputLabel value="#{visitController.calcularDeltaFechas( perfil.infoVst.start )}"/>
 
@@ -50,7 +49,7 @@
                         
                         <h:column>
                             <f:facet name="header">
-                                <h:outputLabel value="Opciones"/>
+                                <h:outputLabel value="Opciones" class="centerOptionsColumn"/>
                             </f:facet> 
 
                             <h:commandButton value="Desconectar" class="btn btn-danger" action="#{visitController.eliminarConectado( perfil.infoEst.nua )}" />
