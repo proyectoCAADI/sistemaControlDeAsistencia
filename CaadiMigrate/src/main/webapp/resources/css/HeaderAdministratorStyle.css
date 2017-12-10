@@ -1,0 +1,115 @@
+
+.banner-administrator{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    font-family: Helvetica, Arial, sans-serif;
+    background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%);
+    border-bottom: 8px solid #A0935F;
+}
+
+.imageBanner{
+    position: absolute;
+    top: 4px;
+    left: 5%;
+}
+
+.header{
+    height: 50px;
+    width: 500px;
+    position: absolute;
+    left: 72.5%;
+    right: 15%;
+    font-family: Gandhi Serif;
+    background-color: rgba(0,0,0,0);
+    padding: 0px;
+    margin: 0px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.nav .administrar, .inicio,
+.sigout{
+    text-decoration: none;
+    padding: 11px 25px;
+    margin: 0.2em 0em 0em 0em;
+    display: block;
+    align-content: center;
+    font-size: 17px;
+}
+
+.periodos, .profesores, .estudiantes,
+.grupos, .visitas, .usuarios, .reportes {
+   padding: 8px 30px;
+   margin: 0.2em 0em 0em 0em;     
+   display: block;
+}
+
+.administrar {
+    background-color: rgba(0,0,0,0);
+    border-left: 1px solid white;
+    color: white;
+}
+
+.inicio {
+    background-color: rgba(0,0,0,0);
+    color: white;
+    border-left: 1px solid white;
+}
+
+.sigout {
+    background-color: rgba(0,0,0,0);
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    color: white;
+}
+
+.periodos, .profesores, .estudiantes,
+.grupos, .visitas, .usuarios, .reportes {
+    background: rgba(14, 52, 91, 0.85);
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.nav > li {
+    float: left;
+}
+
+.nav li a:hover {
+    background-color: white;
+    color: rgb(14, 52, 91);
+    text-decoration: none;
+}
+
+.nav ul {
+    display: none;
+    position: absolute;
+    min-width: 20px;
+}
+
+.periodos:hover, .profesores:hover, .estudiantes:hover,
+.grupos:hover, .visitas:hover, .usuarios:hover, .reportes:hover {
+    display: block;
+    background-color: rgba(0,0,0,0);
+    color: rgb(14, 52, 91);
+    text-decoration: none;
+}
+
+.nav li ul li {
+    position: relative;
+}
+
+.messages li ul li {
+    position: relative;
+}
+
+.nav li ul li ul {
+    right: -100px;
+    top: 0px;
+}

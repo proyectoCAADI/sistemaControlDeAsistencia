@@ -166,7 +166,7 @@ public class Groups implements Serializable {
 
     @Override
     public String toString() {
-        return "com.CaadiTables.Entities.Groups[ id=" + id + " ]";
+        return  id.toString();
     }
     
 }

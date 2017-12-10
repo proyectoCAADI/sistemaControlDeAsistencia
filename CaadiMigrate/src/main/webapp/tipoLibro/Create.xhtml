@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipoLibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipoLibroLabel_idTipoLibro}" for="idTipoLibro" />
+                    <h:inputText id="idTipoLibro" value="#{tipoLibroController.selected.idTipoLibro}" title="#{bundle.CreateTipoLibroTitle_idTipoLibro}" required="true" requiredMessage="#{bundle.CreateTipoLibroRequiredMessage_idTipoLibro}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoLibroLabel_tipoLibro}" for="tipoLibro" />
+                    <h:inputText id="tipoLibro" value="#{tipoLibroController.selected.tipoLibro}" title="#{bundle.CreateTipoLibroTitle_tipoLibro}" required="true" requiredMessage="#{bundle.CreateTipoLibroRequiredMessage_tipoLibro}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoLibroController.create}" value="#{bundle.CreateTipoLibroSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoLibroController.prepareList}" value="#{bundle.CreateTipoLibroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipoLibroIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

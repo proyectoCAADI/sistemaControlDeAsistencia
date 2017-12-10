@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRegistroLibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRegistroLibroLabel_idRegistro}"/>
+                    <h:outputText value="#{registroLibroController.selected.idRegistro}" title="#{bundle.ViewRegistroLibroTitle_idRegistro}"/>
+                    <h:outputText value="#{bundle.ViewRegistroLibroLabel_idVisita}"/>
+                    <h:outputText value="#{registroLibroController.selected.idVisita}" title="#{bundle.ViewRegistroLibroTitle_idVisita}"/>
+                    <h:outputText value="#{bundle.ViewRegistroLibroLabel_codBar}"/>
+                    <h:outputText value="#{registroLibroController.selected.codBar}" title="#{bundle.ViewRegistroLibroTitle_codBar}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{registroLibroController.destroyAndView}" value="#{bundle.ViewRegistroLibroDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRegistroLibroEditLink}"/>
+                <br />
+                <h:commandLink action="#{registroLibroController.prepareCreate}" value="#{bundle.ViewRegistroLibroCreateLink}" />
+                <br />
+                <h:commandLink action="#{registroLibroController.prepareList}" value="#{bundle.ViewRegistroLibroShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRegistroLibroIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

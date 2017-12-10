@@ -4,8 +4,12 @@ import com.CaadiTables.Entities.Groups;
 import com.CaadiTables.JSFs.util.JsfUtil;
 import com.CaadiTables.JSFs.util.PaginationHelper;
 import com.CaadiTables.Beans.GroupsFacade;
+import com.CaadiTables.Entities.Students;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -31,6 +35,20 @@ public class GroupsController implements Serializable {
 
     public GroupsController() {
     }
+    
+    
+    public String verificar (){
+        
+        String nombe = "Hola";
+        
+        if( current.getEmployeeNumber() != null )
+            nombe = current.getEmployeeNumber().getName();
+        
+        return nombe;
+        
+    }
+   
+   
 
     public Groups getSelected() {
         if (current == null) {

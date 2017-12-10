@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateHabilidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHabilidadLabel_idHabilidad}" for="idHabilidad" />
+                    <h:inputText id="idHabilidad" value="#{habilidadController.selected.idHabilidad}" title="#{bundle.CreateHabilidadTitle_idHabilidad}" required="true" requiredMessage="#{bundle.CreateHabilidadRequiredMessage_idHabilidad}"/>
+                    <h:outputLabel value="#{bundle.CreateHabilidadLabel_nombreHabilidad}" for="nombreHabilidad" />
+                    <h:inputText id="nombreHabilidad" value="#{habilidadController.selected.nombreHabilidad}" title="#{bundle.CreateHabilidadTitle_nombreHabilidad}" required="true" requiredMessage="#{bundle.CreateHabilidadRequiredMessage_nombreHabilidad}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{habilidadController.create}" value="#{bundle.CreateHabilidadSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{habilidadController.prepareList}" value="#{bundle.CreateHabilidadShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateHabilidadIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

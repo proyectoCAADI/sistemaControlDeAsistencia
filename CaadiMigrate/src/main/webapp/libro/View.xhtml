@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLibroLabel_idLibro}"/>
+                    <h:outputText value="#{libroController.selected.idLibro}" title="#{bundle.ViewLibroTitle_idLibro}"/>
+                    <h:outputText value="#{bundle.ViewLibroLabel_isbn}"/>
+                    <h:outputText value="#{libroController.selected.isbn}" title="#{bundle.ViewLibroTitle_isbn}"/>
+                    <h:outputText value="#{bundle.ViewLibroLabel_cantidad}"/>
+                    <h:outputText value="#{libroController.selected.cantidad}" title="#{bundle.ViewLibroTitle_cantidad}"/>
+                    <h:outputText value="#{bundle.ViewLibroLabel_añoPublicacion}"/>
+                    <h:outputText value="#{libroController.selected.añoPublicacion}" title="#{bundle.ViewLibroTitle_añoPublicacion}"/>
+                    <h:outputText value="#{bundle.ViewLibroLabel_tituloLibro}"/>
+                    <h:outputText value="#{libroController.selected.tituloLibro}" title="#{bundle.ViewLibroTitle_tituloLibro}"/>
+                    <h:outputText value="#{bundle.ViewLibroLabel_audioLibro}"/>
+                    <h:outputText value="#{libroController.selected.audioLibro}" title="#{bundle.ViewLibroTitle_audioLibro}"/>
+                    <h:outputText value="#{bundle.ViewLibroLabel_idTipoLibro}"/>
+                    <h:outputText value="#{libroController.selected.idTipoLibro}" title="#{bundle.ViewLibroTitle_idTipoLibro}"/>
+                    <h:outputText value="#{bundle.ViewLibroLabel_idRating}"/>
+                    <h:outputText value="#{libroController.selected.idRating}" title="#{bundle.ViewLibroTitle_idRating}"/>
+                    <h:outputText value="#{bundle.ViewLibroLabel_idAreaLibro}"/>
+                    <h:outputText value="#{libroController.selected.idAreaLibro}" title="#{bundle.ViewLibroTitle_idAreaLibro}"/>
+                    <h:outputText value="#{bundle.ViewLibroLabel_idIdioma}"/>
+                    <h:outputText value="#{libroController.selected.idIdioma}" title="#{bundle.ViewLibroTitle_idIdioma}"/>
+                    <h:outputText value="#{bundle.ViewLibroLabel_idNivel}"/>
+                    <h:outputText value="#{libroController.selected.idNivel}" title="#{bundle.ViewLibroTitle_idNivel}"/>
+                    <h:outputText value="#{bundle.ViewLibroLabel_idEditorial}"/>
+                    <h:outputText value="#{libroController.selected.idEditorial}" title="#{bundle.ViewLibroTitle_idEditorial}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{libroController.destroyAndView}" value="#{bundle.ViewLibroDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewLibroEditLink}"/>
+                <br />
+                <h:commandLink action="#{libroController.prepareCreate}" value="#{bundle.ViewLibroCreateLink}" />
+                <br />
+                <h:commandLink action="#{libroController.prepareList}" value="#{bundle.ViewLibroShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewLibroIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

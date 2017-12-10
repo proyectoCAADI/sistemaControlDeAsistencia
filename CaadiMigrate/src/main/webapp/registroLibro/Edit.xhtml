@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRegistroLibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRegistroLibroLabel_idRegistro}" for="idRegistro" />
+                    <h:inputText id="idRegistro" value="#{registroLibroController.selected.idRegistro}" title="#{bundle.EditRegistroLibroTitle_idRegistro}" required="true" requiredMessage="#{bundle.EditRegistroLibroRequiredMessage_idRegistro}"/>
+                    <h:outputLabel value="#{bundle.EditRegistroLibroLabel_idVisita}" for="idVisita" />
+                    <h:selectOneMenu id="idVisita" value="#{registroLibroController.selected.idVisita}" title="#{bundle.EditRegistroLibroTitle_idVisita}" required="true" requiredMessage="#{bundle.EditRegistroLibroRequiredMessage_idVisita}">
+                        <f:selectItems value="#{visitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRegistroLibroLabel_codBar}" for="codBar" />
+                    <h:selectOneMenu id="codBar" value="#{registroLibroController.selected.codBar}" title="#{bundle.EditRegistroLibroTitle_codBar}" required="true" requiredMessage="#{bundle.EditRegistroLibroRequiredMessage_codBar}">
+                        <f:selectItems value="#{libroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{registroLibroController.update}" value="#{bundle.EditRegistroLibroSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRegistroLibroViewLink}"/>
+                <br />
+                <h:commandLink action="#{registroLibroController.prepareList}" value="#{bundle.EditRegistroLibroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRegistroLibroIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

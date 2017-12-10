@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPeliculaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPeliculaLabel_idPelicula}" for="idPelicula" />
+                    <h:inputText id="idPelicula" value="#{peliculaController.selected.idPelicula}" title="#{bundle.EditPeliculaTitle_idPelicula}" required="true" requiredMessage="#{bundle.EditPeliculaRequiredMessage_idPelicula}"/>
+                    <h:outputLabel value="#{bundle.EditPeliculaLabel_tituloPelicula}" for="tituloPelicula" />
+                    <h:inputText id="tituloPelicula" value="#{peliculaController.selected.tituloPelicula}" title="#{bundle.EditPeliculaTitle_tituloPelicula}" required="true" requiredMessage="#{bundle.EditPeliculaRequiredMessage_tituloPelicula}"/>
+                    <h:outputLabel value="#{bundle.EditPeliculaLabel_duracionPelicula}" for="duracionPelicula" />
+                    <h:inputText id="duracionPelicula" value="#{peliculaController.selected.duracionPelicula}" title="#{bundle.EditPeliculaTitle_duracionPelicula}" required="true" requiredMessage="#{bundle.EditPeliculaRequiredMessage_duracionPelicula}"/>
+                    <h:outputLabel value="#{bundle.EditPeliculaLabel_backCover}" for="backCover" />
+                    <h:inputText id="backCover" value="#{peliculaController.selected.backCover}" title="#{bundle.EditPeliculaTitle_backCover}" />
+                    <h:outputLabel value="#{bundle.EditPeliculaLabel_frontCover}" for="frontCover" />
+                    <h:inputText id="frontCover" value="#{peliculaController.selected.frontCover}" title="#{bundle.EditPeliculaTitle_frontCover}" />
+                    <h:outputLabel value="#{bundle.EditPeliculaLabel_idIdioma}" for="idIdioma" />
+                    <h:selectOneMenu id="idIdioma" value="#{peliculaController.selected.idIdioma}" title="#{bundle.EditPeliculaTitle_idIdioma}" required="true" requiredMessage="#{bundle.EditPeliculaRequiredMessage_idIdioma}">
+                        <f:selectItems value="#{idiomaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPeliculaLabel_idSubtitulo}" for="idSubtitulo" />
+                    <h:selectOneMenu id="idSubtitulo" value="#{peliculaController.selected.idSubtitulo}" title="#{bundle.EditPeliculaTitle_idSubtitulo}" required="true" requiredMessage="#{bundle.EditPeliculaRequiredMessage_idSubtitulo}">
+                        <f:selectItems value="#{subtituloController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPeliculaLabel_idActor}" for="idActor" />
+                    <h:selectOneMenu id="idActor" value="#{peliculaController.selected.idActor}" title="#{bundle.EditPeliculaTitle_idActor}" required="true" requiredMessage="#{bundle.EditPeliculaRequiredMessage_idActor}">
+                        <f:selectItems value="#{actorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPeliculaLabel_idRating}" for="idRating" />
+                    <h:selectOneMenu id="idRating" value="#{peliculaController.selected.idRating}" title="#{bundle.EditPeliculaTitle_idRating}" >
+                        <f:selectItems value="#{ratingController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPeliculaLabel_idGenero}" for="idGenero" />
+                    <h:selectOneMenu id="idGenero" value="#{peliculaController.selected.idGenero}" title="#{bundle.EditPeliculaTitle_idGenero}" required="true" requiredMessage="#{bundle.EditPeliculaRequiredMessage_idGenero}">
+                        <f:selectItems value="#{generoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{peliculaController.update}" value="#{bundle.EditPeliculaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPeliculaViewLink}"/>
+                <br />
+                <h:commandLink action="#{peliculaController.prepareList}" value="#{bundle.EditPeliculaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPeliculaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
