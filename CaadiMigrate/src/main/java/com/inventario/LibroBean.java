@@ -4,7 +4,13 @@ package com.inventario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 @Named(value = "bean")
@@ -44,4 +50,16 @@ public class LibroBean implements Serializable {
     public void borrar(Libro libro) {
 		lista.remove(libro);
     }
+    
+    public void insertartabla() throws SQLException{
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/CaadiIntegrada?zeroDateTimeBehavior=convertToNull","root","palabra1");
+        
+        PreparedStatement ps=con.prepareStatement("insert into libro_registro(cod_bar, nua) values(?,810230)");
+        
+        for(int i=0;i<lista.size();i++){
+            ps.setString(1,lista.get(i).getCodbar());
+            ps.executeUpdate();
+        }
+    }
+    
 }

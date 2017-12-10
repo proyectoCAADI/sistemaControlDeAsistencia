@@ -39,8 +39,11 @@
                     <b:panelGrid colSpans="3,9" size="lg">
                         <h:form>
 
-                            <b:inputText value="#{libroRegistroController.selected.codBar}" placeholder="Ingresa el código de barras"/>
-                            <b:commandButton ajax="true" update="@(.tablax)" look="success" value="Agregar" icon="plus" icon-align="left" large-screen="full-width" action="#{libroRegistroController.create}" />
+                            <b:inputText value="#{bean.codbar}" placeholder="Ingresa el código de barras"/>
+                            <b:commandButton ajax="true" update="@(.tablax)" look="success" value="Agregar" icon="plus" icon-align="left" large-screen="full-width" action="#{bean.agregar()}" />
+                            <br></br><br></br> <br></br>   
+                            <b:commandButton ajax="true" look="primary" value="Aceptar" large-screen="full-width" action="#{bean.insertartabla()}" />
+                        
                         </h:form>
                         <b:panel>
 
@@ -69,8 +72,8 @@
 
 
                     <f:facet name="footer">
-                        <b:button value="Cancelar" dismiss="modal" onclick="$('.modal3').modal()"/>
-                        <b:button value="Aceptar" look="primary" dismiss="modal"/>
+                        <b:button value="Regresar" dismiss="modal" onclick="$('.modal3').modal()"/>
+                       
                     </f:facet>
                 </b:modal>   
 
