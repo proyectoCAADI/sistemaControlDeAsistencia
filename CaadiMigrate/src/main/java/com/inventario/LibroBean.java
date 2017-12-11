@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 @Named(value = "bean")
@@ -21,9 +20,9 @@ public class LibroBean implements Serializable {
 
     private ArrayList<Libro> lista = new ArrayList<>();
     private String codbar;
+    private String nua;
     
-    public LibroBean() {
-      
+    public LibroBean() {  
     }
 
     public ArrayList<Libro> getLista() {
@@ -41,6 +40,14 @@ public class LibroBean implements Serializable {
     public void setCodbar(String codbar) {
         this.codbar = codbar;
     }
+
+    public String getNua() {
+        return nua;
+    }
+
+    public void setNua(String nua) {
+        this.nua = nua;
+    }
     
     public void agregar() {
             Libro libro = new Libro(this.codbar);
@@ -53,13 +60,30 @@ public class LibroBean implements Serializable {
     
     public void insertartabla() throws SQLException{
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/CaadiIntegrada?zeroDateTimeBehavior=convertToNull","root","palabra1");
-        
-        PreparedStatement ps=con.prepareStatement("insert into libro_registro(cod_bar, nua) values(?,810230)");
+        String nua = getNua();
+        String codigo = "";
+        int idlibro = 0;
+        int idvisita = 0;
         
         for(int i=0;i<lista.size();i++){
-            ps.setString(1,lista.get(i).getCodbar());
+            codigo = lista.get(i).getCodbar();
+            
+            PreparedStatement sql1=con.prepareStatement("select id_libro from libro where cod_bar = " + codigo);
+            ResultSet res1 = sql1.executeQuery();
+            if ( res1.next() ){
+               idlibro = res1.getInt("id_libro");
+            }
+            PreparedStatement sql2=con.prepareStatement("select id from visit where nua = " + nua);
+            ResultSet res2 = sql2.executeQuery();
+            if ( res2.next() ){
+               idvisita = res2.getInt("id");
+            }
+            
+            PreparedStatement ps=con.prepareStatement("insert into registro_libro(id_libro, id_visita) values(?,?)");
+            ps.setInt(1,idlibro);
+            ps.setInt(2,idvisita);
             ps.executeUpdate();
-        }
+        }       
     }
     
 }

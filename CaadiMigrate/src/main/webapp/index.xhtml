@@ -80,7 +80,7 @@
                 <h:form id="formulario" class="form-horizontal" >
                     <h:panelGrid columns="1" columnClasses="form-group">
                         <p:inputText label="NUA" class="txtNUA" binding="#{visitController.mensaje}"
-                                     value="#{libroRegistroController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>
+                                     value="#{bean.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>
                         <p:messages  for="txtNUA" showIcon="false" autoUpdate="true" closable="true" class="messages"/>
 
                         <p:commandButton class="btn btn-primary btn-block btn-Ingress"  value="Ingresar" action ="#{visitController.mostrarDialogoIngreso()}" onclick="$('.modal1').modal()"/>
