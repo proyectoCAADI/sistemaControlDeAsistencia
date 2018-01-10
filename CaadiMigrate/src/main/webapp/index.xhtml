@@ -13,8 +13,9 @@
             <h:form id="formulario" class="form-horizontal" >                
                 <!-- FORMULARIO PARA INTRODUCIR NUA Y LOS BOTONES PARA LAS DIFERENTES ACCIONES -->
                     <h:panelGrid columns="1" columnClasses="form-group">
-                        <p:inputText label="NUA" class="txtNUA" binding="#{visitController.mensaje}" 
-                                     value="#{visitController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6"/>
+                        <p:inputText label="NUA" class="txtNUA" value="#{visitController.selected.nua}"  placeholder="Teclea tu NUA"  maxlength="6">
+                            <p:ajax event="keyup" update="nameUser" listener="#{studentsController.getNameUser(visitController.selected.nua.nua)}"></p:ajax>
+                        </p:inputText>
 
                         <p:messages  class="txtMessage" for="txtNUA" showIcon="false" autoUpdate="true" closable="true" />
 
@@ -33,7 +34,7 @@
                         <h4 class="modal-title">Confirmacion de usuario</h4>
                     </div>
                     <div class="modal-body">
-                        <p id="welcomeText" align="center"> ¿Eres correcto tu NUA? </p>
+                        <p id="welcomeText" align="center"> ¿Eres <h:outputText id="nameUser" value="#{studentsController.dataUser.name} #{studentsController.dataUser.firstLastName} #{studentsController.dataUser.secondLastName}"/>? </p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" onclick="openWelcome()"> Aceptar </button>
