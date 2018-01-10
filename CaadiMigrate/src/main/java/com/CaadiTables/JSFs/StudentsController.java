@@ -28,10 +28,21 @@ public class StudentsController implements Serializable {
     private com.CaadiTables.Beans.StudentsFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-
+    private Students nameUser;
+    
     public StudentsController() {
     }
 
+//  BUSCAR UN ESTUDIANTE POR NUA
+    public void getNameUser(java.lang.String nua){
+        Students name = getStudents(nua);
+        nameUser = name;
+    }
+    
+    public Students getDataUser(){
+        return nameUser;
+    }
+    
     public Students getSelected() {
         if (current == null) {
             current = new Students();
